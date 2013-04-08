@@ -12,5 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.inview.min
 //= require bootstrap
+//= require edc
 //= require initialize

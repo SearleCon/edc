@@ -29,6 +29,13 @@ gem "hub", ">= 1.10.2", :require => nil, :group => [:development]
 gem "tilt", "1.3.4"
 gem 'strong_parameters'
 gem "routing_concerns", "~> 0.1.0"
+gem 'acts_as_tenant', :git => 'https://github.com/ErwinM/acts_as_tenant.git'
+gem 'delayed_job_active_record'
+gem 'workless'
+gem 'daemons'
+gem 'will_paginate', '~> 3.0'
+gem 'country_select'
+
 
 
 group :production do

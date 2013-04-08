@@ -29,3 +29,8 @@ $.rails.showConfirmDialog = (link) ->
   $(html).modal()
   $("#confirmationDialog .confirm").on "click", ->
     $.rails.confirmed link
+
+
+# Infinite Scrolling - When link is inview on page calls the object index path to fetch records
+$(document).on 'inview', 'a.hook', ->
+  $.getScript $(this).attr('href')

@@ -1,0 +1,3 @@
+= simple_form_for [@notable, @note], html: { id: 'note_form' },remote: true do |f|
+  = f.input :content, as: :text
+  = f.button :submit, 'Save', :class => 'btn-primary'

@@ -1,0 +1,7 @@
+// Pass in path and records object eg. = render 'layouts/paginate', :records => @objects, :path => index_path(:page => @objectshaha.next_page) %>
+
+page_Link = $('a.hook');
+page_Link.attr('href', '#{path}');
+
+- unless records.next_page
+  page_Link.remove();

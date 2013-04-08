@@ -1,13 +1,14 @@
 class UsersController < ApplicationController
   respond_to :html, :js
 
-  before_filter :authenticate_user!
+  #before_filter :authenticate_user!
 
   load_and_authorize_resource :user,:message => 'Not authorized as an administrator.'
 
   def index
     @users = User.all
   end
+
 
   def update
     flash[:notice] = "#{@user.name} was updated successfully" if @user.update_attributes(user_params)

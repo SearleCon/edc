@@ -1,0 +1,12 @@
+= f.simple_fields_for(:addresses) do |address|
+  %h2
+    = address.object.category.capitalize
+  = address.hidden_field :category
+  = address.input :street_address1
+  = address.input :street_address2
+  = address.input :city
+  = address.input :postal_code
+  = address.input :state
+  = address.input :country, as: :country, prompt: "Select a country"
+
+

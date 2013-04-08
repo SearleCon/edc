@@ -1,4 +1,6 @@
 %h3 Home
 - @users.each do |user|
-  %p
-    User: #{link_to user.name, user}
+  %p User: #{link_to user.name, user}
+  #notes
+  = link_to 'Show More', polymorphic_path([user, Note]), class: 'hook', remote: true
+
