@@ -3,6 +3,6 @@
 FactoryGirl.define do
   factory :account do
     company "MyString"
-    subdomain "MyString"
+    subdomain "mystring"
   end
 end

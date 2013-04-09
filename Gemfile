@@ -35,6 +35,8 @@ gem 'workless'
 gem 'daemons'
 gem 'will_paginate', '~> 3.0'
 gem 'country_select'
+gem 'test_after_commit', :group => :test
+gem "shoulda-matchers", :group => :test
 
 
 

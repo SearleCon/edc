@@ -2,6 +2,9 @@ require 'spec_helper'
 
 describe User do
 
+  it { should accept_nested_attributes_for(:account) }
+
+
   before(:each) do
     @attr = {
       :name => "Example User",
@@ -10,6 +13,11 @@ describe User do
       :password_confirmation => "changeme"
     }
   end
+
+  describe 'Notable' do
+    it { should have_many(:notes) }
+  end
+
 
   it "should create a new instance given a valid attribute" do
     User.create!(@attr)
@@ -98,6 +106,41 @@ describe User do
       @user.encrypted_password.should_not be_blank
     end
 
+  end
+
+  describe "multitenancy" do
+
+    before(:each) do
+       ActsAsTenant.current_tenant = Account.create!(company: 'foo', subdomain: 'bar')
+       @user = User.create!(@attr)
+     end
+
+
+     it "should be scoped to the current_tenant" do
+      @user.account.should eq ActsAsTenant.current_tenant
+     end
+
+     it "should ensure the email is unique to the tenant" do
+       FactoryGirl.build(:user, email: @user.email).should_not be_valid
+     end
+
+     after(:each) do
+       ActsAsTenant.current_tenant = nil
+     end
+
+  end
+
+  describe "callbacks" do
+
+    before(:each) do
+      @user = User.create!(@attr)
+    end
+
+    it "should send a welcome email after commit" do
+       Delayed::Job.count.should == 1
+       Delayed::Worker.new.work_off
+       ActionMailer::Base.deliveries.last.to.first.should == @user.email
+    end
   end
 
 end

@@ -1,9 +1,5 @@
 Edc::Application.routes.draw do
 
-  concern :notable do
-    resources :notes, only: [:index, :new, :create, :destroy]
-  end
-
   constraints(Subdomain) do
     root :to => 'home#index'
   end
@@ -15,7 +11,10 @@ Edc::Application.routes.draw do
 
   devise_for :users, :controllers => {:passwords => "passwords", :registrations => "registrations"}
 
-  resources :users, concerns: :notable
+  resources :users do
+   resources :notes, only: [:index, :new, :create, :destroy]
+  end
+
 
   match "*path", :to => "application#routing_error"
 end
