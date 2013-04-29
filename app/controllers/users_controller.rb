@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   respond_to :html, :js
 
-  #before_filter :authenticate_user!
+
+  before_filter :authenticate_user!
 
   load_and_authorize_resource :user,:message => 'Not authorized as an administrator.'
 
@@ -16,11 +17,11 @@ class UsersController < ApplicationController
   end
     
   def destroy
-    unless @user == current_user
+    if @user == current_user
+      redirect_to users_path, :notice => "Can't delete yourself."
+    else
       @user.destroy
       redirect_to users_path, :notice => "User deleted."
-    else
-      redirect_to users_path, :notice => "Can't delete yourself."
     end
   end
 

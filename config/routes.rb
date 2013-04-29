@@ -1,5 +1,14 @@
 Edc::Application.routes.draw do
 
+
+
+  get "drop_box/authorize"
+
+  get "drop_box/authorize_callback"
+
+  match :latest_alert, to: "alert#latest", via: :get
+  match "dismiss_alert/:id", as: :dismiss_alert, to: "dismiss#alert", via: :put
+
   constraints(Subdomain) do
     root :to => 'home#index'
   end
@@ -16,5 +25,4 @@ Edc::Application.routes.draw do
   end
 
 
-  match "*path", :to => "application#routing_error"
 end

@@ -3,5 +3,5 @@ class Note < ActiveRecord::Base
 
   validates :content, presence: true
 
-  self.per_page = 25
+  self.per_page = 23
 end

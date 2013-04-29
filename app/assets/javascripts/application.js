@@ -16,3 +16,6 @@
 //= require bootstrap
 //= require edc
 //= require initialize
+//= require gritter
+//= require poller
+//= require ajax_helper

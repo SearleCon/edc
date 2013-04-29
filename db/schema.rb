@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130408124804) do
+ActiveRecord::Schema.define(:version => 20130415191121) do
 
   create_table "accounts", :force => true do |t|
     t.string   "company"
@@ -32,6 +32,13 @@ ActiveRecord::Schema.define(:version => 20130408124804) do
     t.string   "addressable_type"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+  end
+
+  create_table "alerts", :force => true do |t|
+    t.string   "content"
+    t.boolean  "active"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "delayed_jobs", :force => true do |t|
@@ -60,6 +67,13 @@ ActiveRecord::Schema.define(:version => 20130408124804) do
   end
 
   add_index "notes", ["notable_id", "notable_type"], :name => "index_notes_on_notable_id_and_notable_type"
+
+  create_table "permissions", :force => true do |t|
+    t.string   "action"
+    t.string   "subject"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"

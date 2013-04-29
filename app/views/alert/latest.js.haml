@@ -1,0 +1,6 @@
+- if @alert
+ = extend_gritter(position: :bottom_right);
+ = add_gritter(simple_format(@alert.content, image: :notice));
+Poller.poll();
+
+

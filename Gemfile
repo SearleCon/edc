@@ -37,6 +37,10 @@ gem 'will_paginate', '~> 3.0'
 gem 'country_select'
 gem 'test_after_commit', :group => :test
 gem "shoulda-matchers", :group => :test
+gem "gritter", "1.0.3"
+gem "dropbox-api"
+
+
 
 
 
@@ -46,4 +50,5 @@ end
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'jazz_hands'
 end
