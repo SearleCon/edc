@@ -1,10 +1,12 @@
 Edc::Application.routes.draw do
 
 
-
-  get "drop_box/authorize"
-
-  get "drop_box/authorize_callback"
+  scope controller: :drop_box do
+   get "authorize_dropbox"
+   get 'confirm_dropbox'
+   get 'dropbox_setup_complete'
+   get 'setup_dropbox'
+  end
 
   match :latest_alert, to: "alert#latest", via: :get
   match "dismiss_alert/:id", as: :dismiss_alert, to: "dismiss#alert", via: :put

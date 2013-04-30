@@ -1,15 +1,19 @@
 class DropBoxController < ApplicationController
-  def authorize
+  def authorize_dropbox
     consumer = Dropbox::API::OAuth.consumer(:authorize)
     session[:request_token] = consumer.get_request_token
-    redirect_to session[:request_token].authorize_url(:oauth_callback => drop_box_authorize_callback_url)
+    redirect_to session[:request_token].authorize_url(oauth_callback: confirm_dropbox_url)
   end
 
-  def authorize_callback
-    access = session.delete(:request_token).get_access_token(:oauth_verifier => params[:oauth_token])
-    current_user.drop_box_key = access.token
-    current_user.drop_box_secret = access.secret
+  def confirm_dropbox
+    access = session.delete(:request_token).get_access_token(oauth_verifier: params[:oauth_token])
+    current_user.account.drop_box_key = access.token
+    current_user.account.drop_box_secret = access.secret
     current_user.save!
-    redirect_to root_url
+    redirect_to dropbox_setup_complete_url
   end
+
+  def dropbox_setup_complete
+  end
+
 end

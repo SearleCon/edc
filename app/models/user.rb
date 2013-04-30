@@ -3,9 +3,9 @@ class User < ActiveRecord::Base
   include Notable
   include Addressable
 
-  belongs_to :account
+  belongs_to :account, autosave: true
 
-  delegate :company, :subdomain, to: :account, allow_nil: true
+  delegate :company, :subdomain, :drop_box_key, :drop_box_secret , to: :account, allow_nil: true
 
   acts_as_tenant :account
 
