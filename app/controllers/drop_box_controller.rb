@@ -13,7 +13,4 @@ class DropBoxController < ApplicationController
     redirect_to dropbox_setup_complete_url
   end
 
-  def dropbox_setup_complete
-  end
-
 end

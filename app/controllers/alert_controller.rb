@@ -10,5 +10,4 @@ class AlertController < ApplicationController
     @alert = Alert.first
   end
 
-
 end

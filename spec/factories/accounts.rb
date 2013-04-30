@@ -4,5 +4,7 @@ FactoryGirl.define do
   factory :account do
     company "MyString"
     subdomain "mystring"
+    drop_box_key 'mystring'
+    drop_box_secret 'mystring'
   end
 end

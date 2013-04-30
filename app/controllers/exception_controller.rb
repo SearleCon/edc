@@ -1,4 +1,3 @@
-class ExceptionController < ApplicationController
   class ExceptionController < ApplicationController
     layout 'application'
 
@@ -25,4 +24,3 @@ class ExceptionController < ApplicationController
     end
     helper_method :details
   end
-end
