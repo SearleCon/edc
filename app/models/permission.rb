@@ -10,5 +10,13 @@
 #
 
 class Permission < ActiveRecord::Base
+  has_many :role_permissions
+  has_many :roles, through: :role_permissions
 
+  validates :action, :subject, presence: true
+
+
+  def display_name
+    "#{action.capitalize} #{subject.capitalize.pluralize}"
+  end
 end

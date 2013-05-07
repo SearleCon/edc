@@ -47,5 +47,5 @@ class User < ActiveRecord::Base
   def after_create_processing
     UserMailer.delay.welcome(self)
   end
-  
+
 end

@@ -1,5 +1,6 @@
 Edc::Application.routes.draw do
 
+  resources :roles, except: [:edit, :update, :show]
 
   scope controller: :drop_box do
    get "authorize_dropbox"
@@ -24,6 +25,11 @@ Edc::Application.routes.draw do
 
   resources :users do
    resources :notes, only: [:index, :new, :create, :destroy]
+  end
+
+  scope controller: :role_permissions do
+    get 'edit', as: :permissions_edit
+    put 'update', as: :permissions_update
   end
 
 end

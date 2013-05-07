@@ -1,0 +1,8 @@
+%h2 Roles
+
+- @roles.each do |role|
+  %p
+    = role.name
+    = link_to "Delete", role_path(role), method: :delete
+
+=link_to "Add role", new_role_path

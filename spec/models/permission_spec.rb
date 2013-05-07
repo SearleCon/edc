@@ -12,5 +12,11 @@
 require 'spec_helper'
 
 describe Permission do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  it "has a valid factory" do
+    FactoryGirl.create(:permission).should be_valid
+  end
+
+  it { should validate_presence_of(:action) }
+  it { should validate_presence_of(:subject) }
 end

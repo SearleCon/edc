@@ -13,4 +13,15 @@ class PermittedParams < Struct.new(:params, :current_user)
    params[:note].merge!(noted_by: current_user.name)
    params.require(:note).permit(:content, :noted_by)
  end
+
+ def role
+   params.require(:role).permit(:name)
+ end
+
+ def role_permissions
+   #TODO - Investigate strong params
+   params[:roles] = {} unless params.has_key?(:roles)
+   Role.all.each { |role| params[:roles][role.id] = {permission_ids: []} unless params[:roles].has_key?(role.id.to_s) }
+   params.require(:roles).permit!
+ end
 end

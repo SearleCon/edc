@@ -9,7 +9,7 @@ class RolifyCreateRoles < ActiveRecord::Migration
 
     create_table(:users_roles, :id => false) do |t|
       t.references :user
-      t.references :role
+      t.references :roles
     end
 
     add_index(:roles, :name)

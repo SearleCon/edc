@@ -1,0 +1,10 @@
+
+= simple_form_for @role do |f|
+ = f.error_notification
+ .form-inputs
+  %fieldset
+   %legend
+    Role
+   = f.input :name
+   .form-inputs
+    = f.button :submit, 'Save', class: 'btn-primary'
