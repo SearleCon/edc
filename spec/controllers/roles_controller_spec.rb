@@ -2,16 +2,27 @@ require 'spec_helper'
 
 describe RolesController do
 
+  before (:each) do
+
+    @user = FactoryGirl.create(:admin)
+    sign_in @user
+  end
+
   describe "GET 'new'" do
-    it "returns http success" do
-      get 'new'
-      response.should be_success
+    it "assigns a new Role to @role" do
+      get :new
+      expect(assigns(:role)).to be_a_new(Role)
+    end
+
+    it "renders a new template" do
+      get :new
+      expect(response).to render_template :new
     end
   end
 
-  describe "GET 'create'" do
+  describe "POST 'create'" do
     it "returns http success" do
-      get 'create'
+      post 'create'
       response.should be_success
     end
   end

@@ -12,5 +12,15 @@
 require 'spec_helper'
 
 describe RolePermission do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  it "has a valid factory" do
+    FactoryGirl.create(:role_permission).should be_valid
+  end
+
+  it { should belong_to(:role) }
+  it { should belong_to(:permission) }
+
+
+  it {should validate_presence_of(:permission_id)}
+  it {should validate_presence_of(:role_id)}
 end

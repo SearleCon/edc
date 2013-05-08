@@ -17,6 +17,9 @@ describe Permission do
     FactoryGirl.create(:permission).should be_valid
   end
 
+  it { should have_many(:role_permissions) }
+  it { should have_many(:roles).through(:role_permissions) }
+
   it { should validate_presence_of(:action) }
   it { should validate_presence_of(:subject) }
 end
