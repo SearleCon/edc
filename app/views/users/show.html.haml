@@ -16,8 +16,7 @@
       %tr.info
         %td= permission.display_name
 
-= link_to 'Rights', user_permissions_edit_path(@user)
-
+= render 'notes/notes', notes: current_user.notes
 
 
 

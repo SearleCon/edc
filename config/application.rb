@@ -41,8 +41,8 @@ module Edc
 
 
     # Exception Handling
-    config.exceptions_app = ->(env) { ExceptionController.action(:show).call(env) }
-    config.action_dispatch.rescue_responses["CanCan::AccessDenied"] = :unauthorized
+    config.exceptions_app = self.routes
+    config.action_dispatch.rescue_responses["CanCan::AccessDenied"] = :forbidden
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.

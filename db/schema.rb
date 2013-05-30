@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130506092605) do
+ActiveRecord::Schema.define(:version => 20130530142952) do
 
   create_table "accounts", :force => true do |t|
     t.string   "company"
@@ -71,9 +71,10 @@ ActiveRecord::Schema.define(:version => 20130506092605) do
     t.string   "content"
     t.integer  "notable_id"
     t.string   "notable_type"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.string   "noted_by"
+    t.boolean  "trashed",      :default => false
   end
 
   add_index "notes", ["notable_id", "notable_type"], :name => "index_notes_on_notable_id_and_notable_type"

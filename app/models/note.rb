@@ -12,6 +12,7 @@
 #
 
 class Note < ActiveRecord::Base
+  include Trashable
   belongs_to :notable, polymorphic: true
 
   validates :content, presence: true

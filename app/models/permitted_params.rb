@@ -10,8 +10,7 @@ class PermittedParams < Struct.new(:params, :current_user)
  end
 
  def note
-   params[:note].merge!(noted_by: current_user.name)
-   params.require(:note).permit(:content, :noted_by)
+   params.require(:note).permit(:content).merge(noted_by: current_user.name)
  end
 
  def role
@@ -19,9 +18,10 @@ class PermittedParams < Struct.new(:params, :current_user)
  end
 
  def role_permissions
-   #TODO - Investigate strong params
-   params[:roles] = {} unless params.has_key?(:roles)
-   Role.all.each { |role| params[:roles][role.id] = {permission_ids: []} unless params[:roles].has_key?(role.id.to_s) }
-   params.require(:roles).permit!
+   if current_user && current_user.has_role?(:admin)
+    params[:roles] = {} unless params.has_key?(:roles)
+    Role.all.each { |role| params[:roles][role.id] = {permission_ids: []} unless params[:roles].has_key?(role.id.to_s) }
+    params.require(:roles).permit!
+   end
  end
 end

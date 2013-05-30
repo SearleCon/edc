@@ -11,12 +11,10 @@ class NotesController < ApplicationController
   end
 
   def create
-    flash.now[:notice] = "Note created." if @note.save
     respond_with(@note)
   end
 
   def destroy
-    flash.now[:notice] = "Note destroyed" if @note.destroy
     respond_with(@note)
   end
 

@@ -9,15 +9,20 @@
         = csrf_meta_tags
         = yield(:head)
   %body{:class => "#{controller_name}", "data-action" => action_name, "data-controller" => controller_path}
-    .navbar.navbar-fixed-top
+    .navbar.navbar-inverse.navbar-fixed-top
       %nav.navbar-inner
         .container
           = render 'layouts/navigation'
-    #main{:roles => "main"}
+    #main{roles: "main"}
       .container
         .content
           .row
-            .span12
+            #sidebar.span3
+              .well
+                = yield(:sidebar)
+            %a.toggles{href: "#"}
+              %i.icon-chevron-left.icon-border
+            #main_view.span9
               = gflash
               = render 'layouts/messages'
               = yield
