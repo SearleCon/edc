@@ -1,27 +1,27 @@
 module Addressable
   extend ActiveSupport::Concern
 
+  CATEGORIES = {postal: 'postal', work: 'work', home: 'home'}
+
   included do
     has_many :addresses, as: :addressable
-
     accepts_nested_attributes_for :addresses
   end
 
   def initialize_addresses
-    %W(postal work home).each { |category| addresses.build(category: category)  }
+    CATEGORIES.values.each { |v| addresses.build(category: v)  }
   end
 
-
   def postal_address
-    addresses.select { |address| address.category == 'postal' }.first
+    addresses.select { |address| address.category.eql?(CATEGORIES[:postal]) }.first
   end
 
   def work_address
-   addresses.select { |address| address.category == 'work' }.first
+   addresses.select { |address| address.category.eql?(CATEGORIES[:work]) }.first
   end
 
   def residential_address
-   addresses.select { |address| address.category == 'home' }.first
+   addresses.select { |address| address.category.eql?(CATEGORIES[:home])}.first
   end
 
 end

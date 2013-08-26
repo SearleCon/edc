@@ -7,11 +7,10 @@ class RegistrationsController < Devise::RegistrationsController
    respond_with resource
   end
 
-
-  def resource_params
-    permitted_params.user
+  def create
+    super
+    Delayed::Job.enqueue WelcomeMailJob.new(resource.id) unless resource.invalid?
   end
-  private :resource_params
 
   protected
   def after_sign_up_path_for(resource_or_scope)

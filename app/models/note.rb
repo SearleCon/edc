@@ -9,13 +9,18 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  noted_by     :string(255)
+#  trashed      :boolean          default(FALSE)
 #
 
 class Note < ActiveRecord::Base
-  include Trashable
   belongs_to :notable, polymorphic: true
+
+
+  default_scope -> { order(created_at: :desc) }
 
   validates :content, presence: true
 
+
   self.per_page = 23
+
 end

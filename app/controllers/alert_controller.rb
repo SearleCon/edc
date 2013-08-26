@@ -7,7 +7,7 @@ class AlertController < ApplicationController
 
   private
   def fetch_alert
-    @alert = Alert.first
+    @alert = Alert.order(created_at: :desc).first
   end
 
 end

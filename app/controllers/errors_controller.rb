@@ -1,5 +1,4 @@
   class ErrorsController < ApplicationController
-    layout 'application'
 
     def show
       @exception = env["action_dispatch.exception"]

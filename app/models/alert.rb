@@ -10,10 +10,9 @@
 #
 
 class Alert < ActiveRecord::Base
-  default_scope -> { order('id desc').where(active: true) }
+  default_scope -> { where(active: true) }
 
   validates :content, presence: true
-
 
   def dismiss
     toggle! :active

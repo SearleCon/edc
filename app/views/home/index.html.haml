@@ -1,13 +1,6 @@
-- content_for :sidebar do
-  %p
-    %span.icon-spinner.icon-spin
-    Sidebar
-
 %h3 Home
 - @users.each do |user|
   %p
     %span.icon-user
     User: #{link_to user.name, user}
-  #notes
-  = link_to 'Show More', polymorphic_path([user, Note]), class: 'hook', remote: true
 

@@ -1,14 +1,14 @@
-= form_tag permissions_update_path, method: :put do
-  %table.table.table-bordered
+= form_tag permissions_update_path, method: :patch do
+  %table.table.table-bordered.table-striped.table-condensed
     %tr
       %th
-      - @roles.each do |role|
-        %th= role.name.capitalize
-    - @permissions.each do |permission|
+      - @role_permissions.roles.each do |role|
+        %th= role
+    - @role_permissions.permissions.each do |permission|
       %tr
         %th
-          = permission.display_name
-        - @roles.each do |role|
+          = permission
+        - @role_permissions.roles.each do |role|
           %td= check_box_tag "roles[#{role.id}][permission_ids][]", permission.id, role.permissions.include?(permission)
-  = submit_tag "Update"
+  = submit_tag "Update", class: 'btn btn-primary'
 

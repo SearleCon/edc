@@ -15,11 +15,11 @@ Edc::Application.routes.draw do
   #get :latest, to: "alert#latest"
 
   constraints(Subdomain) do
-    root to: 'home#index'
+    root to: 'home#index', as: :home
   end
 
   authenticated :user do
-    root to: 'home#index'
+    root to: 'home#index', as: :authenticated_root
   end
   root to: "home#index"
 
@@ -31,10 +31,10 @@ Edc::Application.routes.draw do
 
   scope controller: :role_permissions do
     get :edit, as: :permissions_edit
-    put :update, as: :permissions_update
+    patch :update, as: :permissions_update
   end
 
-  match '(errors)/:status', to: 'errors#show', constraints: {status: /\d{3}/}
+  match '(errors)/:status', to: 'errors#show', constraints: {status: /\d{3}/}, via: :all
 
 
 end

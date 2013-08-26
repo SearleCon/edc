@@ -16,7 +16,7 @@ class Permission < ActiveRecord::Base
   validates :action, :subject, presence: true
 
 
-  def display_name
+  def to_s
     "#{action.capitalize} #{subject.capitalize.pluralize}"
   end
 end

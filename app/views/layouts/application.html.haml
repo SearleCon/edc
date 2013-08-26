@@ -17,12 +17,7 @@
       .container
         .content
           .row
-            #sidebar.span3
-              .well
-                = yield(:sidebar)
-            %a.toggles{href: "#"}
-              %i.icon-chevron-left.icon-border
-            #main_view.span9
+            #main_view.span12
               = gflash
               = render 'layouts/messages'
               = yield

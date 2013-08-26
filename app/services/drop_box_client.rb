@@ -8,7 +8,7 @@ class DropBoxClient
   end
 
   def get_file(name)
-   result = @client.find name
+    result = @client.find name
     nil if !result.is_dir
   end
 

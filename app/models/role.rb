@@ -12,7 +12,7 @@
 #
 
 class Role < ActiveRecord::Base
-  has_and_belongs_to_many :users, join_table: :users_roles
+  has_and_belongs_to_many :users
   belongs_to :resource, polymorphic: true
   belongs_to :account
 
@@ -21,8 +21,10 @@ class Role < ActiveRecord::Base
 
   acts_as_tenant :account
 
-  scopify
-
   validates :name, uniqueness: true , presence: true
+
+  def to_s
+    name.capitalize
+  end
 
 end

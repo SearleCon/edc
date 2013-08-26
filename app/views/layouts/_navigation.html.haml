@@ -3,9 +3,9 @@
   - if user_signed_in?
     %li
       = link_to 'Edit account', edit_user_registration_path
-    - if current_user.has_role? :admin
+    - if current_user.has_role? :exec
       %li
-        = link_to 'Admin', users_path
+        = link_to 'Exec', users_path
     %li
       = link_to 'Dropbox Setup', setup_dropbox_path if current_user.drop_box_key.blank? && current_user.drop_box_secret.blank?
     %li

@@ -1,0 +1,1 @@
+require "#{Rails.application.root}/lib/devise/sanitizers/user_sanitizer.rb"

@@ -17,10 +17,10 @@
 #  updated_at             :datetime         not null
 #  name                   :string(255)
 #  account_id             :integer
+#  timezone               :string(255)
 #
 
 class User < ActiveRecord::Base
-  include AfterSaveProcessing
   include Notable
   include Addressable
 
@@ -34,6 +34,8 @@ class User < ActiveRecord::Base
 
   rolify
 
+  after_initialize :init
+
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -44,8 +46,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_to_tenant :email
   validates_associated :account
 
-  def after_create_processing
-    UserMailer.delay.welcome(self)
+  private
+  def init
+    self.timezone = Time.zone.name if new_record?
   end
-
 end

@@ -15,8 +15,3 @@
     - @user.roles.first.permissions.all.each do |permission|
       %tr.info
         %td= permission.display_name
-
-= render 'notes/notes', notes: current_user.notes
-
-
-

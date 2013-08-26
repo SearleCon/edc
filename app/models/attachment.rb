@@ -13,6 +13,5 @@
 class Attachment < ActiveRecord::Base
   belongs_to :attachable, polymorphic: true
 
-
   validates :filename, presence: true
 end

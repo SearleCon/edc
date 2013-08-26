@@ -3,10 +3,8 @@ class RolePermissionsController < ApplicationController
 
 
   def edit
-    @roles = Role.all
-    @permissions = Permission.all
-    authorize! :read, Permission
-    authorize! :read, Role
+    @role_permissions = RolePermissionsDecorator.new
+    authorize! :manage, RolePermission
   end
 
   def update
@@ -23,6 +21,8 @@ class RolePermissionsController < ApplicationController
   end
 
   def role_permissions_params
-    permitted_params.role_permissions
+      params[:roles] = {} unless params.has_key?(:roles)
+      Role.all.each { |role| params[:roles][role.id] = {permission_ids: []} unless params[:roles].has_key?(role.id.to_s) }
+      params.require(:roles).permit!
   end
 end
