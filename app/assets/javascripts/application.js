@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery.infinitescroll
 //= require bootstrap
+//= require bootstrap-sortable
 //= require edc
 //= require initialize
 //= require gritter
