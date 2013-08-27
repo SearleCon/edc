@@ -1,9 +1,9 @@
 class RolesController < ApplicationController
   respond_to :html
 
-  before_filter :authenticate_user!
-  before_filter :new_resource, only: [:new, :create]
-  before_filter :get_resource, only: [:destroy]
+  before_action :authenticate_user!
+  before_action :new_resource, only: [:new, :create]
+  before_action :get_resource, only: [:destroy]
 
 
   def index

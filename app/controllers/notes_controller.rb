@@ -1,12 +1,12 @@
 class NotesController < ApplicationController
   respond_to :html, :js
 
-  before_filter :load_notable
-  before_filter :new_resource, only: [:new, :create]
-  before_filter :get_resource, only: [:destroy]
+  before_action :load_notable
+  before_action :new_resource, only: [:new, :create]
+  before_action :get_resource, only: [:destroy]
 
   def index
-    @notes = @notable.notes.paginate(page: params[:page])
+    @notes = @notable.notes.page(params[:page])
     respond_with @notes
   end
 

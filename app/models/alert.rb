@@ -10,7 +10,7 @@
 #
 
 class Alert < ActiveRecord::Base
-  default_scope -> { where(active: true) }
+  default_scope -> { where(active: true).order(created_at: :desc) }
 
   validates :content, presence: true
 

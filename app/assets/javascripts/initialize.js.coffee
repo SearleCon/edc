@@ -31,13 +31,13 @@ $.rails.showConfirmDialog = (link) ->
     $.rails.confirmed link
 
 
-# Infinite Scrolling - When link is inview on page calls the object index path to fetch records
-$(document).on 'inview', 'a.hook', ->
-  $.getScript $(this).attr('href')
-
-
-
-
+  $('#notes').infinitescroll
+    loading:
+      finishedMsg: ""
+      msgText: "<em>Loading ...</em>"
+    navSelector: "nav.pagination"
+    nextSelector: "nav.pagination a[rel=next]"
+    itemSelector: ".note"
 
 $ ->
  Poller.poll()
@@ -47,3 +47,11 @@ $ ->
       width: "toggle", 0
     $("#main_view").toggleClass "span11 span9"
     $("#main_view").toggleClass "no-sidebar"
+
+ $('#notes').infinitescroll
+  loading:
+    finishedMsg: ""
+    msgText: "<em>Loading ...</em>"
+  navSelector: "nav.pagination"
+  nextSelector: "nav.pagination a[rel=next]"
+  itemSelector: ".note"

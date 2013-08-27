@@ -1,4 +1,3 @@
-%h3 User
 %p
   User: #{@user.name}
 %p
@@ -9,9 +8,9 @@
 %p
   Permissions
 
-  %table.table.table-condensed
+  %table.table.table-condensed.table-bordered.table-striped
     %th
       Abilities
     - @user.roles.first.permissions.all.each do |permission|
       %tr.info
-        %td= permission.display_name
+        %td= permission

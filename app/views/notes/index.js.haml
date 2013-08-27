@@ -1,2 +1,1 @@
-$('#notes').append('#{escape_javascript (render @notes)}');
-= render 'shared/paginate', :records => @notes, :path => polymorphic_path([@notable, Note],:page => @notes.next_page)
+$('#notes').append('#{j render @notes}');

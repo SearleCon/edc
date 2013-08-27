@@ -12,10 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.inview.min
+//= require jquery.infinitescroll
 //= require bootstrap
 //= require edc
 //= require initialize
 //= require gritter
 //= require poller
 //= require ajax_helper
+//= require turbolinks
+
+
+

@@ -1,6 +1,4 @@
 %h3 Home
-- @users.each do |user|
-  %p
-    %span.icon-user
-    User: #{link_to user.name, user}
+%p User: #{link_to @users.first.name, @users.first}
+= render 'notes/notes', notes: @users.first.notes.page(params[:page])
 

@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   respond_to :html, :js
 
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   load_and_authorize_resource :user, message: 'Not authorized as an administrator.'
 
   def index
-    @users = User.all
+    @users = User.where.not(id: current_user)
   end
 
 

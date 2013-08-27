@@ -46,7 +46,7 @@ gem "delayed_job", "~> 4.0.0"
 gem "delayed_job_active_record", "~> 4.0.0"
 
 # Pagination
-gem 'will_paginate', '~> 3.0'
+gem 'kaminari'
 
 
 # Notifications
@@ -55,17 +55,12 @@ gem "gritter", "1.0.3"
 # DropBox
 gem "dropbox-api"
 
-
-
 # Turbolinks
 gem 'jquery-turbolinks'
 gem 'turbolinks', '~> 1.3.0'
 
-
 # App Responders - Sets flash in respond_with()
 gem 'responders', '1.0.0.rc'
-
-
 
 group :development do
   gem "better_errors"
@@ -74,8 +69,6 @@ group :development do
   gem 'jazz_hands'
   gem 'quiet_assets'
 end
-
-
 
 group :production do
   gem 'pg'

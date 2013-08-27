@@ -1,5 +1,5 @@
 class AlertController < ApplicationController
-  before_filter :fetch_alert
+  before_action :fetch_alert
 
   def latest
     @alert.dismiss if @alert
@@ -7,7 +7,7 @@ class AlertController < ApplicationController
 
   private
   def fetch_alert
-    @alert = Alert.order(created_at: :desc).first
+    @alert = Alert.first
   end
 
 end
