@@ -5,7 +5,7 @@ describe AlertController do
 
 
   before(:each) do
-   @alert =  FactoryGirl.create(:alert)
+   @alert =  FactoryGirl.create(:alerts)
   end
 
 
@@ -18,7 +18,7 @@ describe AlertController do
 
     it "should set alert to inactive" do
       xhr :get, 'latest'
-       assigns(:alert).active == false
+       assigns(:alerts).active == false
     end
   end
 

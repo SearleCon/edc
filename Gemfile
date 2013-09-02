@@ -25,7 +25,6 @@ gem "devise-async"
 
 # Authorization
 gem "cancan", "~> 1.6.10"
-gem "rolify", "~> 3.3.0.rc4"
 
 
 # Form Builders
@@ -61,6 +60,16 @@ gem 'turbolinks', '~> 1.3.0'
 
 # App Responders - Sets flash in respond_with()
 gem 'responders', '1.0.0.rc'
+
+
+# Dates
+gem 'stamp'
+
+
+# Emails
+gem 'premailer-rails'
+
+
 
 group :development do
   gem "better_errors"

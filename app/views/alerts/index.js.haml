@@ -1,0 +1,7 @@
+- if @alerts.any?
+  - @alerts.each do |alert|
+    = extend_gritter(position: :bottom_right);
+    = add_gritter(alert.content, image: :notice, after_close: "$.ajax({ url: '#{alert_path(alert)}', dataType: 'json' ,method: 'DELETE', })");
+Poller.poll();
+
+

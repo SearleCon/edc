@@ -18,35 +18,45 @@
 #  name                   :string(255)
 #  account_id             :integer
 #  timezone               :string(255)
+#  role_id                :integer
 #
 
 class User < ActiveRecord::Base
   include Notable
   include Addressable
 
-  belongs_to :account, autosave: true
-
-  delegate :company, :subdomain, :drop_box_key, :drop_box_secret , to: :account, allow_nil: true
-
-  acts_as_tenant :account
-
-  accepts_nested_attributes_for :account
-
-  rolify
-
-  after_initialize :init
-
-
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  acts_as_tenant :account
+
+  belongs_to :account, autosave: true
+  belongs_to :role, autosave: true
+
+  accepts_nested_attributes_for :account
+
+  delegate :company, :subdomain, :drop_box_key, :drop_box_secret , to: :account, allow_nil: true
+
+  delegate :name, :permissions, to: :role, prefix: true, allow_nil: true
+
+  scope :exclude, ->(user) {where.not(id: user)}
 
   validates_uniqueness_to_tenant :email
   validates_associated :account
 
-  private
+
+  after_initialize :init
+
+
+  def has_role?(role)
+    return false unless self.role_name
+    self.role_name == role.to_s
+  end
+
+
+  protected
   def init
     self.timezone = Time.zone.name if new_record?
   end

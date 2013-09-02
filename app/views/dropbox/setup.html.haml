@@ -1,8 +1,6 @@
 .hero-unit
-  %h1
-    Setup
   %br
-  %h4 Welcome to the dropbox setup screen, follow the instructions below to connect your dropbox account to the EDC app
+  %h3 Welcome to the dropbox setup screen, follow the instructions below to connect your dropbox account to the EDC app
   %br
   %p 1. Click the authorize button
   %p 2. This will send you to the below DropBox page:
@@ -11,5 +9,5 @@
   %p 3. Login to DropBox if required otherwise click the allow button seen in the image above to permit EDC to access your DropBox
   %p 4. If the above is successful your app will now be connected to DropBox.
   %br
-  = link_to 'Authorize Dropbox', authorize_dropbox_path, class: 'btn btn-primary'
+  = link_to 'Authorize Dropbox', dropbox_authorize_path, class: 'btn btn-primary'
 

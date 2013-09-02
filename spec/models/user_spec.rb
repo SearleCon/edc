@@ -18,6 +18,7 @@
 #  name                   :string(255)
 #  account_id             :integer
 #  timezone               :string(255)
+#  role_id                :integer
 #
 
 require 'spec_helper'

@@ -7,7 +7,7 @@
       %li
         = link_to 'Exec', users_path
     %li
-      = link_to 'Dropbox Setup', setup_dropbox_path if current_user.drop_box_key.blank? && current_user.drop_box_secret.blank?
+      = link_to 'Dropbox Setup', dropbox_setup_path
     %li
       = link_to 'Logout', destroy_user_session_path, :method=>'delete'
     %li.dropdown
@@ -18,7 +18,7 @@
         %li{:roles => "presentation"}
           = link_to 'Add and Remove Roles', roles_path
         %li{:roles => "presentation"}
-          = link_to 'Manage Role Permissions', permissions_edit_path
+          = link_to 'Manage Role Permissions', role_permissions_edit_path
   - else
     %li
       = link_to 'Sign up', new_user_registration_path

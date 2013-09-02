@@ -13,10 +13,10 @@ require 'spec_helper'
 
 describe Alert do
   it "has a valid factory" do
-    FactoryGirl.create(:alert).should be_valid
+    FactoryGirl.create(:alerts).should be_valid
   end
 
   it "is invalid without content" do
-    FactoryGirl.build(:alert, content: nil).should_not be_valid
+    FactoryGirl.build(:alerts, content: nil).should_not be_valid
   end
 end

@@ -1,8 +1,8 @@
 @Poller =
   poll: ->
-    setTimeout @request, 5000 * 12
+    setTimeout @request, 500 * 12
 
   request: ->
     AjaxHelper.read
-     url: '/latest_alert'
+     url: '/alerts'
      response: 'script'

@@ -41,12 +41,6 @@ $.rails.showConfirmDialog = (link) ->
 
 $ ->
  Poller.poll()
- $("a.toggles").click ->
-    $("a.toggles i").toggleClass "icon-chevron-left icon-chevron-right"
-    $("#sidebar").animate
-      width: "toggle", 0
-    $("#main_view").toggleClass "span11 span9"
-    $("#main_view").toggleClass "no-sidebar"
 
  $('#notes').infinitescroll
   loading:

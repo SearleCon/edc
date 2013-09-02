@@ -2,8 +2,9 @@ class RolePermissionsDecorator
 
   attr_reader :roles, :permissions
 
-  def initialize
-    @roles = Role.includes(:permissions)
-    @permissions = Permission.all
+  def initialize(*args)
+    options = args.extract_options!
+    @roles = options[:roles]
+    @permissions = options[:permissions]
   end
 end

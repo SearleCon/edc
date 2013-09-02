@@ -2,13 +2,11 @@
 #
 # Table name: roles
 #
-#  id            :integer          not null, primary key
-#  name          :string(255)
-#  resource_id   :integer
-#  resource_type :string(255)
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  account_id    :integer
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  account_id :integer
 #
 
 require 'spec_helper'

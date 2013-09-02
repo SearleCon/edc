@@ -2,13 +2,13 @@ require "application_responder"
 
 class ApplicationController < ActionController::Base
   self.responder = ApplicationResponder
-  respond_to :html
+  respond_to :html, :json, :js
+
+  set_current_tenant_by_subdomain(:account, :subdomain)
 
   protect_from_forgery with: :exception
 
   layout :has_layout?
-
-  set_current_tenant_by_subdomain(:account, :subdomain)
 
   before_action :set_timezone
 
@@ -21,17 +21,12 @@ class ApplicationController < ActionController::Base
     Time.zone = current_user.timezone if current_user
   end
 
-
-  #def permitted_params
-  #  @permitted_params ||= PermittedParams.new(params, current_user)
-  #end
-
   def after_sign_in_path_for(resource_or_scope)
     root_url(subdomain: resource_or_scope.subdomain)
   end
 
   def after_sign_out_path_for(resource_or_scope)
-    request.referrer
+    root_url
   end
 
   protected

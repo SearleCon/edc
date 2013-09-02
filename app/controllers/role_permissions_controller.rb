@@ -1,18 +1,16 @@
 class RolePermissionsController < ApplicationController
-  before_action :authenticate_user!
-
-
+  authorize_resource
   def edit
-    @role_permissions = RolePermissionsDecorator.new
-    authorize! :manage, RolePermission
+    roles = Role.includes(:permissions)
+    permissions = Permission.all
+    @role_permissions = RolePermissionsDecorator.new(roles: roles, permissions: permissions)
   end
 
   def update
-    authorize! :update, RolePermission
     if (Role.update(role_permissions_params.keys, role_permissions_params.values).reject! { |r| r.errors.empty? }).empty?
       flash[:notice] = 'Roles were updated successfully.'
     else
-      flash[:alert] = 'An error occured while updating the roles.'
+      flash[:alerts] = 'An error occured while updating the roles.'
     end
     redirect_to permissions_edit_url
   end

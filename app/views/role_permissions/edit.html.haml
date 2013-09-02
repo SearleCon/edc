@@ -1,9 +1,9 @@
-= form_tag permissions_update_path, method: :patch do
+= form_tag role_permissions_update_path, method: :patch do
   %table.table.table-bordered.table-striped.table-condensed
     %tr
       %th
       - @role_permissions.roles.each do |role|
-        %th= role
+        %th= role.name
     - @role_permissions.permissions.each do |permission|
       %tr
         %th

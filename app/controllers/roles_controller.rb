@@ -15,20 +15,19 @@ class RolesController < ApplicationController
   end
 
   def create
-    authorize! :modify, Role
-    flash[:notice] = "Role #{@role.name} created successfully." if @role.save
+    authorize! :create, Role
+    @role.save
     respond_with(@role, location: permissions_edit_url)
   end
 
   def destroy
     @role.destroy
-    flash[:notice] = "Role #{@role.name} was destroyed successfully" if @role.destroyed?
     respond_with(@role)
   end
 
   private
   def role_params
-    permitted_params.role if params[:role]
+    params.require(:role).permit(:name) if params[:role]
   end
 
   def new_resource
@@ -37,6 +36,11 @@ class RolesController < ApplicationController
 
   def get_resource
     @role = Role.find(params[:id])
+  end
+
+
+  def interpolation_options
+    { resource_name: @role.name }
   end
 
 end
