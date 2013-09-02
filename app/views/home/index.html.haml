@@ -1,4 +1,3 @@
 %h3 Home
 %p User: #{link_to @users.first.name, @users.first}
 = render 'notes/notes', notes: @users.first.notes.page(params[:page])
-

@@ -1,8 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
 
   def new
-   resource = build_resource({})
-   resource.initialize_addresses
+   resource = build_resource
    resource.build_account
    respond_with resource
   end

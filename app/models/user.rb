@@ -23,12 +23,11 @@
 
 class User < ActiveRecord::Base
   include Notable
-  include Addressable
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   acts_as_tenant :account
 
@@ -38,17 +37,14 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :account
 
   delegate :company, :subdomain, :drop_box_key, :drop_box_secret , to: :account, allow_nil: true
-
   delegate :name, :permissions, to: :role, prefix: true, allow_nil: true
 
-  scope :exclude, ->(user) {where.not(id: user)}
+  scope :exclude, -> (user){where.not(id: user)}
 
   validates_uniqueness_to_tenant :email
   validates_associated :account
 
-
   after_initialize :init
-
 
   def has_role?(role)
     return false unless self.role_name
@@ -56,8 +52,13 @@ class User < ActiveRecord::Base
   end
 
 
+  private
+  def defaults
+    {timezone: Time.zone.name}
+  end
+
   protected
   def init
-    self.timezone = Time.zone.name if new_record?
+    assign_attributes(defaults) if new_record?
   end
 end

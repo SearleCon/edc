@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   layout :has_layout?
 
   before_action :set_timezone
+  before_action :set_mailer_host
 
   private
   def has_layout?
@@ -19,6 +20,10 @@ class ApplicationController < ActionController::Base
 
   def set_timezone
     Time.zone = current_user.timezone if current_user
+  end
+
+  def set_mailer_host
+    ActionMailer::Base.default_url_options[:host] = request.host_with_port
   end
 
   def after_sign_in_path_for(resource_or_scope)

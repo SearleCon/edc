@@ -11,27 +11,25 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'uglifier', '~> 1.3.0'
 
-
 # Frontend
+gem 'hpricot'
 gem 'haml-rails'
+gem 'html2haml'
 gem 'bootstrap-sass', '~> 2.3.2.1'
 gem 'normalize-rails'
 gem 'bootswatch-rails'
 
-
 # Authentication
 gem 'devise', "~> 3.0.0"
 gem "devise-async"
+gem 'devise_invitable', github: 'scambra/devise_invitable'
 
 # Authorization
 gem "cancan", "~> 1.6.10"
 
-
 # Form Builders
 gem 'simple_form', "3.0.0.rc"
 gem 'country_select'
-
-
 
 # Env variables
 gem "figaro"
@@ -39,14 +37,12 @@ gem "figaro"
 # Multi tenancy
 gem "acts_as_tenant", "~> 0.3.1"
 
-
 # Background Processing
 gem "delayed_job", "~> 4.0.0"
 gem "delayed_job_active_record", "~> 4.0.0"
 
 # Pagination
 gem 'kaminari'
-
 
 # Notifications
 gem "gritter", "1.0.3"
@@ -61,15 +57,11 @@ gem 'turbolinks', '~> 1.3.0'
 # App Responders - Sets flash in respond_with()
 gem 'responders', '1.0.0.rc'
 
-
 # Dates
 gem 'stamp'
 
-
 # Emails
 gem 'premailer-rails'
-
-
 
 group :development do
   gem "better_errors"

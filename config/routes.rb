@@ -41,7 +41,7 @@ Edc::Application.routes.draw do
 
 end
 #== Route Map
-# Generated on 02 Sep 2013 08:16
+# Generated on 02 Sep 2013 15:32
 #
 #                    roles GET    /roles(.:format)                         roles#index
 #                          POST   /roles(.:format)                         roles#create
@@ -52,6 +52,7 @@ end
 #   dropbox_setup_complete GET    /dropbox/setup_complete(.:format)        dropbox#setup_complete
 #            dropbox_setup GET    /dropbox/setup(.:format)                 dropbox#setup
 #                   alerts GET    /alerts(.:format)                        alerts#index
+#                    alert DELETE /alerts/:id(.:format)                    alerts#destroy
 #                     home GET    /                                        home#index
 #       authenticated_root GET    /                                        home#index
 #                     root GET    /                                        home#index
@@ -70,6 +71,12 @@ end
 #                          PATCH  /users(.:format)                         registrations#update
 #                          PUT    /users(.:format)                         registrations#update
 #                          DELETE /users(.:format)                         registrations#destroy
+#   accept_user_invitation GET    /users/invitation/accept(.:format)       devise/invitations#edit
+#   remove_user_invitation GET    /users/invitation/remove(.:format)       devise/invitations#destroy
+#          user_invitation POST   /users/invitation(.:format)              devise/invitations#create
+#      new_user_invitation GET    /users/invitation/new(.:format)          devise/invitations#new
+#                          PATCH  /users/invitation(.:format)              devise/invitations#update
+#                          PUT    /users/invitation(.:format)              devise/invitations#update
 #               user_notes GET    /users/:user_id/notes(.:format)          notes#index
 #                          POST   /users/:user_id/notes(.:format)          notes#create
 #            new_user_note GET    /users/:user_id/notes/new(.:format)      notes#new
