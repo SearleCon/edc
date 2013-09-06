@@ -18,7 +18,8 @@ class Role < ActiveRecord::Base
 
   acts_as_tenant :account
 
-  validates :name, uniqueness: true , presence: true
+  validates :name, presence: true
+  validates_uniqueness_to_tenant :name
 
   before_save :format_attributes
 

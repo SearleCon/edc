@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 
   private
   def has_layout?
-    false if request.xhr?
+     false if request.xhr?
   end
 
   def set_timezone

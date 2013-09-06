@@ -15,6 +15,7 @@
 //= require jquery.infinitescroll
 //= require bootstrap
 //= require bootstrap-sortable
+//= require temporal
 //= require edc
 //= require initialize
 //= require gritter

@@ -63,6 +63,13 @@ gem 'stamp'
 # Emails
 gem 'premailer-rails'
 
+# Fetch time zone
+gem 'temporal-rails'
+
+
+# Static Pages
+gem 'high_voltage'
+
 group :development do
   gem "better_errors"
   gem 'annotate', '~> 2.5.0'

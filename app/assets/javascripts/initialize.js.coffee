@@ -39,6 +39,9 @@ $.rails.showConfirmDialog = (link) ->
     nextSelector: "nav.pagination a[rel=next]"
     itemSelector: ".note"
 
+
+Temporal.detect()
+
 $ ->
  Poller.poll()
 

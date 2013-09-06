@@ -1,9 +1,10 @@
 Edc::Application.routes.draw do
-
   # Concerns
   concern :notable do |options|
     resources :notes, options
   end
+
+  resources :accounts, only: [:new, :create]
 
   resources :roles, except: [:edit, :update, :show]
 
@@ -17,15 +18,14 @@ Edc::Application.routes.draw do
   #Alerts
   resources :alerts, only: [:index, :destroy]
 
-
   constraints(Subdomain) do
     root to: 'home#index', as: :home
   end
 
   authenticated :user do
-    root to: 'home#index', as: :authenticated_root
+    root to: 'high_voltage/pages#show', id: 'home', as: :authenticated_root
   end
-  root to: "home#index"
+  root to: 'high_voltage/pages#show', id: 'home'
 
   devise_for :users, controllers: {registrations: :registrations}
 
@@ -38,11 +38,12 @@ Edc::Application.routes.draw do
 
   match '(errors)/:status', to: 'errors#show', constraints: {status: /\d{3}/}, via: :all
 
-
 end
 #== Route Map
-# Generated on 02 Sep 2013 15:32
+# Generated on 06 Sep 2013 13:49
 #
+#                 accounts POST   /accounts(.:format)                      accounts#create
+#              new_account GET    /accounts/new(.:format)                  accounts#new
 #                    roles GET    /roles(.:format)                         roles#index
 #                          POST   /roles(.:format)                         roles#create
 #                 new_role GET    /roles/new(.:format)                     roles#new
@@ -54,8 +55,8 @@ end
 #                   alerts GET    /alerts(.:format)                        alerts#index
 #                    alert DELETE /alerts/:id(.:format)                    alerts#destroy
 #                     home GET    /                                        home#index
-#       authenticated_root GET    /                                        home#index
-#                     root GET    /                                        home#index
+#       authenticated_root GET    /                                        high_voltage/pages#show {:id=>"home"}
+#                     root GET    /                                        high_voltage/pages#show {:id=>"home"}
 #         new_user_session GET    /users/sign_in(.:format)                 devise/sessions#new
 #             user_session POST   /users/sign_in(.:format)                 devise/sessions#create
 #     destroy_user_session DELETE /users/sign_out(.:format)                devise/sessions#destroy
@@ -96,3 +97,4 @@ end
 #    role_permissions_edit GET    /role_permissions/edit(.:format)         role_permissions#edit
 #  role_permissions_update PATCH  /role_permissions/update(.:format)       role_permissions#update
 #                                 (/errors)/:status(.:format)              errors#show {:status=>/\d{3}/}
+#                     page GET    /*id                                     high_voltage/pages#show

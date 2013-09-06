@@ -4,15 +4,15 @@
   = f.error_notification
   = display_base_errors resource
   = f.input :name
-  = f.input :email, :required => true
+  = f.input :email, required: true
   = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false
   = f.input :password_confirmation, required: false
   = f.simple_fields_for :account do |account|
     = account.input :company
     = account.input :subdomain
   = f.input :timezone, as: :time_zone
-  = f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true
-  = f.button :submit, 'Update', :class => 'btn-primary'
+  = f.input :current_password, hint: "we need your current password to confirm your changes", :required => true
+  = f.button :submit, 'Update', class: 'btn-primary'
 
 = link_to "Invite a friend", new_user_invitation_path
 
