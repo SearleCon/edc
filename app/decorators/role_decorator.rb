@@ -16,10 +16,6 @@ class RoleDecorator
     role.name.titleize
   end
 
-  def has_permission?(permission)
-   (permissions.select { |p| permission.id == p.id }).any?
-  end
-
   def method_missing(method_name, *args, &block)
     role.send(method_name, *args, &block)
   end

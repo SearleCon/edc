@@ -1,7 +1,8 @@
 class PermissionDecorator
+  include Comparable
 
   def self.build_collection(permissions)
-    permissions.map {|permission| new(permission)}
+    permissions.collect {|permission| new(permission)}
   end
 
   attr_reader :permission
@@ -12,6 +13,10 @@ class PermissionDecorator
 
   def description
     "#{permission.action} #{permission.subject}".humanize
+  end
+
+  def <=> (other)
+    self.permission <=> other.permission
   end
 
   def method_missing(method_name, *args, &block)
