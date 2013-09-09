@@ -66,6 +66,9 @@ gem 'premailer-rails'
 # Fetch time zone
 gem 'temporal-rails'
 
+# Subdomains
+gem 'subdomain-fu', github: 'mbleigh/subdomain-fu'
+
 
 # Static Pages
 gem 'high_voltage'

@@ -1,24 +1,25 @@
-= link_to "Edc", root_url(host: request.domain), class: 'brand'
+= link_to 'Edc', root_url(host: request.domain), class: 'brand'
 %ul.nav
   - if user_signed_in?
     %li
-      = link_to "#{current_user.role}", edit_user_registration_path
+      = link_to 'Edit Account', edit_user_registration_path
     - if current_user.has_role? :exec
-      %li = (current_user.has_role? :exec).to_s
-      %li = link_to 'Exec', users_path
+      %li= link_to 'Exec', users_path
     %li
       = link_to 'Dropbox Setup', dropbox_setup_path
     %li
       = link_to 'Logout', destroy_user_session_path, method: :delete
     %li.dropdown
-      %a#drop1.dropdown-toggle{data: {toggle: "dropdown"}, href: "#", roles: "button"}
-        Manage Access and Roles
+      %a#management.dropdown-toggle{data: {toggle: 'dropdown'}, href: '#', roles: 'button'}
+        Management
         %b.caret
-      %ul.dropdown-menu{roles: "menu"}
-        %li{roles: "presentation"}
+      %ul.dropdown-menu{roles: 'menu'}
+        %li{roles: 'presentation'}
           = link_to 'Add and Remove Roles', roles_path
-        %li{roles: "presentation"}
+        %li{roles: 'presentation'}
           = link_to 'Manage Role Permissions', role_permissions_edit_path
+        %li{roles: 'presentation'}
+          = link_to 'Users', users_path
   - else
     %li
       = link_to 'Sign up', new_user_registration_path

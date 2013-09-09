@@ -11,3 +11,5 @@
           %td= (user.role_name.presence || 'none').capitalize
           %td= link_to "#{glyph(:cog)}Change Role".html_safe,"#role-options-#{user.id}",data: {toggle: "modal"}
           %td= link_to "#{glyph(:remove_sign)}Delete".html_safe, user_path(user), data: { confirm: "Are you sure?" }, method: :delete
+  = link_to "Add User", new_user_invitation_path, class: 'btn btn-primary'
+

@@ -12,7 +12,7 @@
 #
 
 class Account < ActiveRecord::Base
-  has_many :users
+  has_many :users, dependent: :destroy
 
   validates :company, :subdomain, presence: true
   validates :subdomain, format:{ with: /\A[a-z0-9_]+\z/ , message: "must be lowercase alphanumerics only"}

@@ -6,9 +6,6 @@
   = f.input :email, required: true
   = f.input :password, required: true
   = f.input :password_confirmation, required: true
-  = f.simple_fields_for :account do |account|
-    = account.input :company
-    = account.input :subdomain
   = f.input :timezone, as: :time_zone
   = f.input :role_id, as: :hidden
 

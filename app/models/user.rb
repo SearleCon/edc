@@ -41,8 +41,6 @@ class User < ActiveRecord::Base
   belongs_to :account, autosave: true
   belongs_to :role
 
-  accepts_nested_attributes_for :account
-
   delegate :company, :subdomain, :drop_box_key, :drop_box_secret , to: :account, allow_nil: true
   delegate :name, :permissions, to: :role, prefix: true, allow_nil: true
 

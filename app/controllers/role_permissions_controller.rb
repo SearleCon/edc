@@ -1,7 +1,6 @@
 class RolePermissionsController < ApplicationController
-  authorize_resource
   def edit
-    roles = Role.includes(:permissions)
+    roles = Role.where.not(name: [:admin, current_user.role.name])
     permissions = Permission.all
     @role_permissions = RolePermissionsDecorator.new(roles: roles, permissions: permissions)
   end
@@ -10,9 +9,9 @@ class RolePermissionsController < ApplicationController
     if (Role.update(role_permissions_params.keys, role_permissions_params.values).reject! { |r| r.errors.empty? }).empty?
       flash[:notice] = 'Roles were updated successfully.'
     else
-      flash[:alerts] = 'An error occured while updating the roles.'
+      flash[:alert] = 'An error occured while updating the roles.'
     end
-    redirect_to permissions_edit_url
+    redirect_to role_permissions_edit_url
   end
 
   def role_permissions_params

@@ -3,12 +3,12 @@
     %tr
       %th
       - @role_permissions.roles.each do |role|
-        %th= role.name
+        %th= role.name.titleize
     - @role_permissions.permissions.each do |permission|
       %tr
         %th
-          = permission
+          = permission.description
         - @role_permissions.roles.each do |role|
-          %td= check_box_tag "roles[#{role.id}][permission_ids][]", permission.id, role.permissions.include?(permission)
+          %td= check_box_tag "roles[#{role.id}][permission_ids][]", permission.id, role.has_permission?(permission)
   = submit_tag "Update", class: 'btn btn-primary'
 
