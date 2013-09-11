@@ -14,30 +14,14 @@
 require 'spec_helper'
 
 describe Account do
-  it "has a valid factory" do
-     FactoryGirl.create(:account).should be_valid
-  end
+  let(:account) { FactoryGirl.build(:account) }
 
-  it "is invalid without a company" do
-    FactoryGirl.build(:account, company: nil).should_not be_valid
-  end
+  subject { account }
 
-  it "is invalid without a subdomain" do
-    FactoryGirl.build(:account, subdomain: nil).should_not be_valid
-  end
-
-  it "is invalid if the subdomain length is greater than 32 characters" do
-    FactoryGirl.build(:account, subdomain: 'a' * 33).should_not be_valid
-  end
-
-  it "is invalid if the subdomain format does not contain lowercase alphanumerics" do
-    FactoryGirl.build(:account, subdomain: "+PPT$ZZ").should_not be_valid
-  end
-
-  it "is invalid if subdomain includes (www ftp mail test)" do
-     FactoryGirl.build(:account, subdomain: 'www').should_not be_valid
-     FactoryGirl.build(:account, subdomain: 'ftp').should_not be_valid
-     FactoryGirl.build(:account, subdomain: 'mail').should_not be_valid
-  end
-
+  it { should be_valid }
+  it { should validate_presence_of(:company) }
+  it { should validate_presence_of(:subdomain) }
+  it { should ensure_length_of(:subdomain).is_at_most(32).with_long_message(/maximum of 32 characters/) }
+  it { should_not allow_value(%w(111 1TP PPP P@P)).for(:subdomain)}
+  it { should_not allow_value(%w(www ftp mail)).for(:subdomain) }
 end

@@ -26,7 +26,7 @@ describe RolePermissionsController do
     end
   end
 
-  describe "PUT 'update'" do
+  describe "PATCH 'update'" do
     before (:each) do
       @role = Role.first
       @permission = FactoryGirl.create(:permission)

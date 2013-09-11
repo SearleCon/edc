@@ -22,7 +22,7 @@ gem 'bootswatch-rails'
 # Authentication
 gem 'devise', "~> 3.0.0"
 gem "devise-async"
-gem 'devise_invitable', github: 'scambra/devise_invitable'
+gem 'devise_invitable'
 
 # Authorization
 gem "cancan", "~> 1.6.10"
@@ -73,6 +73,9 @@ gem 'subdomain-fu', github: 'mbleigh/subdomain-fu'
 # Static Pages
 gem 'high_voltage'
 
+# Enums
+gem 'enumify'
+
 group :development do
   gem "better_errors"
   gem 'annotate', '~> 2.5.0'
@@ -99,7 +102,7 @@ group :test do
 
 
   # Matchers
-  gem "shoulda-matchers"
+  gem "shoulda-matchers", "~> 2.4.0.rc1"
   gem 'json_spec'
   gem 'email_spec'
 end

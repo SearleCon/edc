@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Addressable do
+describe Addressed do
 
   before :all do
     m = ActiveRecord::Migration.new
@@ -15,7 +15,7 @@ describe Addressable do
   end
 
   class Dummy < ActiveRecord::Base
-    include Addressable
+    include Addressed
   end
 
   let(:wrapper){ Dummy.new }

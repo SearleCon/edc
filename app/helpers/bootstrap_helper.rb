@@ -33,9 +33,7 @@ module BootstrapHelper
   def table_classes(classes)
     table_classes = %w(table)
     classes.each do |c|
-      if TABLE_CLASSES.has_key?(c)
-       table_classes << TABLE_CLASSES[c]
-      end
+      table_classes << TABLE_CLASSES[c] if TABLE_CLASSES.has_key?(c)
     end
     table_classes
   end

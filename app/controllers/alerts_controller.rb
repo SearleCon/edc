@@ -6,7 +6,6 @@ class AlertsController < ApplicationController
  def destroy
    @alert = Alert.find(params[:id])
    @alert.destroy
-   respond_with(@alert)
+   respond_with(@alert, head: :no_content)
  end
-
 end

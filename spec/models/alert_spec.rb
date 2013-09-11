@@ -12,11 +12,14 @@
 require 'spec_helper'
 
 describe Alert do
-  it "has a valid factory" do
-    FactoryGirl.create(:alerts).should be_valid
-  end
+  let(:alert) { FactoryGirl.build(:alert) }
+  subject { alert }
 
-  it "is invalid without content" do
-    FactoryGirl.build(:alerts, content: nil).should_not be_valid
+  it { should be_valid }
+  it { should validate_presence_of(:content) }
+  it { should respond_to(:dismiss) }
+
+  it 'should not be active after it is dismissed' do
+    expect { alert.dismiss}.to change { alert.active }.from(true).to(false)
   end
 end

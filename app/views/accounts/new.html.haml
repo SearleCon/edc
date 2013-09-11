@@ -1,10 +1,9 @@
-.alert.text-center
-  %h3 Welcome to the account setup screen.
-  %h4 1. Part one requires you to choose a subdomain and a set your company name.
-  %h4 2. Once this is done, you will be taken to the second step which is to setup your executive user.
 = simple_form_for @account do  |f|
+  %legend
+    Setup your account
+    %hr
   %fieldset
     = f.input :company
-    = f.input :subdomain
+    = f.input :subdomain, hint: 'This will generate the site name you will use for your company eg. test.app.com'
   .controls
     = f.button :submit,'Create', class: 'btn btn-primary'

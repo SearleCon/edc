@@ -16,6 +16,6 @@ class Account < ActiveRecord::Base
 
   validates :company, :subdomain, presence: true
   validates :subdomain, format:{ with: /\A[a-z0-9_]+\z/ , message: "must be lowercase alphanumerics only"}
-  validates :subdomain, length: {maximum: 32, message: "exceeds maximum of 32 characters"}
+  validates :subdomain, length: {maximum: 32, too_long: 'maximum of 32 characters'}
   validates :subdomain, exclusion: {in: ['www', 'mail', 'ftp'], message: "is not available"}
 end

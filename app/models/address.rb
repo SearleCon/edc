@@ -21,4 +21,6 @@ class Address < ActiveRecord::Base
 
   validates :street_address1, :street_address2, :city, :category, :country, :state, :postal_code, presence: true
   validates :postal_code, numericality: true
+
+  enum :category, [:post, :work, :home]
 end
