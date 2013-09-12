@@ -74,7 +74,7 @@ GEM
     country_select (1.2.0)
     css_parser (1.3.5)
       addressable
-    database_cleaner (1.0.0.RC1)
+    database_cleaner (1.0.1)
     debug_inspector (0.0.2)
     debugger (1.6.1)
       columnize (>= 0.3.1)
@@ -285,6 +285,10 @@ GEM
       sprockets (~> 2.8)
     sqlite3 (1.3.8)
     stamp (0.5.0)
+    temping (3.2.0)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      sqlite3 (~> 1.3.7)
     temporal-rails (0.2.3)
       coffee-rails
       railties (>= 3.2.5, < 5)
@@ -306,7 +310,7 @@ GEM
     websocket (1.0.7)
     xpath (1.0.0)
       nokogiri (~> 1.3)
-    yard (0.8.7)
+    yard (0.8.7.1)
 
 PLATFORMS
   ruby
@@ -321,7 +325,7 @@ DEPENDENCIES
   capybara (~> 2.0.2)
   coffee-rails (~> 4.0.0)
   country_select
-  database_cleaner (= 1.0.0.RC1)
+  database_cleaner (< 1.1.0)
   delayed_job (~> 4.0.0)
   delayed_job_active_record (~> 4.0.0)
   devise (~> 3.0.0)
@@ -358,6 +362,7 @@ DEPENDENCIES
   sqlite3
   stamp
   subdomain-fu!
+  temping
   temporal-rails
   turbolinks (~> 1.3.0)
   uglifier (~> 1.3.0)

@@ -76,6 +76,10 @@ gem 'high_voltage'
 # Enums
 gem 'enumify'
 
+# Temp Tables
+gem 'temping'
+
+
 group :development do
   gem "better_errors"
   gem 'annotate', '~> 2.5.0'
@@ -98,7 +102,7 @@ group :test do
   # Factories
   gem "faker", "~> 1.1.2"
   gem "factory_girl_rails", "~> 4.2.1"
-  gem "database_cleaner", '1.0.0.RC1'
+  gem "database_cleaner", '< 1.1.0'
 
 
   # Matchers

@@ -13,10 +13,9 @@
 require 'spec_helper'
 
 describe Attachment do
+  let(:attachment) { FactoryGirl.build(:attachment) }
 
-  it "has a valid factory" do
-    FactoryGirl.create(:attachment)
-  end
+  subject { attachment }
 
   it { should validate_presence_of(:filename) }
 

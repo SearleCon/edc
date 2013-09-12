@@ -8,15 +8,14 @@ class AccountService
   end
 
   def create
-    Account.transaction do
-      account.save!
-      create_roles!
-    end
+    Account.transaction { raise ActiveRecord::Rollback unless account.save && create_roles }
     account
   end
 
   private
-  def create_roles!
-    DEFAULT_ROLES.each { |role|  Role.create!(name: role, account: account) }
+  def create_roles
+    DEFAULT_ROLES.each { |role| Role.create!(name: role, account: account) }
+  rescue
+    false
   end
 end

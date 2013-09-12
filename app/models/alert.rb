@@ -17,6 +17,6 @@ class Alert < ActiveRecord::Base
   validates :content, presence: true
 
   def dismiss
-    toggle! :active
+    update(active: false)
   end
 end

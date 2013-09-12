@@ -15,13 +15,9 @@
 require 'spec_helper'
 
 describe Note do
+  let(:note){ FactoryGirl.build(:note) }
+  subject { note }
 
-  it "has a valid factory" do
-    FactoryGirl.create(:note).should be_valid
-  end
-
-  it "is invalid without content" do
-    FactoryGirl.build(:note, content: nil).should_not be_valid
-  end
+  it { should validate_presence_of(:content) }
 
 end

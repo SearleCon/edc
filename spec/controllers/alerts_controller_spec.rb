@@ -2,26 +2,25 @@ require 'spec_helper'
 
 
 describe AlertsController do
-  let!(:alert) { FactoryGirl.create(:alert) }
+  let(:alert) { FactoryGirl.create(:alert) }
 
-  describe "GET 'index'" do
+  describe 'GET index' do
+    before { xhr :get, :index }
+    it { should respond_with(:success) }
+    it { should render_template(:index) }
 
-    it 'populates an array of active alerts' do
-      xhr :get, 'index'
-      expect(assigns(:alerts)).to match_array([alert])
-    end
-
-    it 'renders the index template' do
-     xhr :get, 'index'
-     expect(response).to render_template :index
+    it 'assigns the alerts' do
+     assigns(:alerts).should match_array([alert])
     end
   end
 
-  describe "Delete 'destroy'" do
+  describe 'DELETE destroy' do
+    before { xhr :delete, :destroy, id: alert, format: :json }
+
+    it {should respond_with(:no_content)}
+
     it 'deletes the alert' do
-      expect {
-        xhr :delete, 'destroy', id: alert
-      }.to change(Alert,:count).by(-1)
+      expect(assigns(:alert).destroyed?).to be_true
     end
   end
 

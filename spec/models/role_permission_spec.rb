@@ -12,15 +12,12 @@
 require 'spec_helper'
 
 describe RolePermission do
+  let(:role_permission) { FactoryGirl.build(:role_permission)  }
 
-  it "has a valid factory" do
-    FactoryGirl.create(:role_permission).should be_valid
-  end
+   subject { role_permission }
 
   it { should belong_to(:role) }
   it { should belong_to(:permission) }
-
-
-  it {should validate_presence_of(:permission_id)}
-  it {should validate_presence_of(:role_id)}
+  it { should validate_presence_of(:permission)}
+  it { should validate_presence_of(:role) }
 end

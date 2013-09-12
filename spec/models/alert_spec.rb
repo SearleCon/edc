@@ -19,7 +19,10 @@ describe Alert do
   it { should validate_presence_of(:content) }
   it { should respond_to(:dismiss) }
 
-  it 'should not be active after it is dismissed' do
-    expect { alert.dismiss}.to change { alert.active }.from(true).to(false)
+  describe '#dismiss' do
+    it 'should not be active after it is dismissed' do
+      expect { alert.dismiss }.to change { alert.active }.from(true).to(false)
+    end
   end
+
 end

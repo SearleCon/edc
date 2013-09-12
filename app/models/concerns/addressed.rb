@@ -11,16 +11,16 @@ module Addressed
   end
 
   def postal_address
-    addresses.select(&:post?).first
+    addresses.post.first
   end
 
 
   def work_address
-    addresses.select(&:work?).first
+    addresses.work.first
   end
 
   def home_address
-    addresses.select(&:home?).first
+    addresses.home.first
   end
 
 end
