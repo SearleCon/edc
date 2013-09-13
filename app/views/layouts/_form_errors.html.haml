@@ -1,8 +1,11 @@
 #errors
   - if object && object.errors.any?
-    .alert.alert-error
-      %button.close{type: 'button', data: {dismiss: 'alert'}} x
-      = "#{pluralize(object.errors.count, 'error')} prevented this record from being saved:"
-    %ul.icons-ul
-      = list_of(object.errors.full_messages, ) do |item|
-        = fa_icon("exclamation-sign li", text: item)
+    .panel.panel-danger
+      .panel-heading
+        = "#{pluralize(object.errors.count, 'error')} prevented this record from being saved:"
+      .panel-body
+        %ul.icons-ul.list-group
+          = list_of(object.errors.full_messages) do |item|
+            = fa_icon("exclamation-sign li", text: item)
+
+

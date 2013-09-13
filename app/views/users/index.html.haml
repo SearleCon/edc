@@ -1,6 +1,6 @@
 %h2 Users
 .span8
-  - bootstrap_table headers:['','UserName', 'Email', 'Registered', 'Role', '',''], types: [:bordered, :striped, :condensed], html_options: {class: 'sortable'} do
+  - bootstrap_table headers:['','UserName', 'Email', 'Registered', 'Role',''], types: [:bordered, :striped, :condensed], html_options: {class: 'sortable'} do
     %tbody
       - @users.each do |user|
         %tr[user]
@@ -9,7 +9,7 @@
           %td= user.email
           %td= user.created_at.to_s(:default)
           %td= (user.role_name.presence || 'none').capitalize
-          %td= link_to "Change Role", "#role-options-#{user.id}",icon: 'icon-cog icon-large' ,data: {toggle: "modal"}
-          %td= link_to 'Delete', user_path(user),icon: 'icon-remove-sign', data: { confirm: "Are you sure?" }, method: :delete
+          %td= link_to "Change Role", "#role-options-#{user.id}",icon: 'icon-cog icon-large' ,data: {toggle: "modal"}, class: 'btn btn-warning'
+          %td= link_to 'Delete', user_path(user),icon: 'icon-remove-sign', data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger'
   = link_to 'Add', new_user_invitation_path, icon: 'icon-plus-sign icon-large', class: 'btn btn-primary'
 

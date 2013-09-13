@@ -4,6 +4,21 @@ GIT
   specs:
     subdomain-fu (1.0.0.beta3)
 
+GIT
+  remote: git://github.com/plataformatec/simple_form.git
+  revision: f0b95cb9805ebc895947cafaf33a07b67eeb8c71
+  specs:
+    simple_form (3.0.0.rc)
+      actionpack (>= 4.0.0, < 4.1)
+      activemodel (>= 4.0.0, < 4.1)
+
+GIT
+  remote: git://github.com/thomas-mcdonald/bootstrap-sass.git
+  revision: c0e12a90ba3e44ab68d3f153411fba3edc400b2a
+  specs:
+    bootstrap-sass (3.0.0.0)
+      sass (~> 3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -46,8 +61,6 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (2.3.2.2)
-      sass (~> 3.2)
     bootswatch-rails (0.5.0)
       railties (>= 3.1)
     builder (3.1.4)
@@ -273,9 +286,6 @@ GEM
     sexp_processor (4.3.0)
     shoulda-matchers (2.4.0.rc1)
       activesupport (>= 3.0.0)
-    simple_form (3.0.0.rc)
-      actionpack (>= 4.0.0.rc1, < 4.1)
-      activemodel (>= 4.0.0.rc1, < 4.1)
     slop (3.4.6)
     sprockets (2.10.0)
       hike (~> 1.2)
@@ -322,7 +332,7 @@ DEPENDENCIES
   acts_as_tenant (~> 0.3.1)
   annotate (~> 2.5.0)
   better_errors
-  bootstrap-sass (~> 2.3.2.1)
+  bootstrap-sass!
   bootswatch-rails
   cancan (~> 1.6.10)
   capybara (~> 2.0.2)
@@ -363,7 +373,7 @@ DEPENDENCIES
   rspec-rails (~> 2.0)
   sass-rails (~> 4.0.0)
   shoulda-matchers (~> 2.4.0.rc1)
-  simple_form (= 3.0.0.rc)
+  simple_form!
   sqlite3
   stamp
   subdomain-fu!

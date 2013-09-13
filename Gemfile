@@ -15,7 +15,7 @@ gem 'uglifier', '~> 1.3.0'
 gem 'hpricot'
 gem 'haml-rails'
 gem 'html2haml'
-gem 'bootstrap-sass', '~> 2.3.2.1'
+gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
 gem 'normalize-rails'
 gem 'bootswatch-rails'
 
@@ -28,7 +28,7 @@ gem 'devise_invitable'
 gem "cancan", "~> 1.6.10"
 
 # Form Builders
-gem 'simple_form', "3.0.0.rc"
+gem 'simple_form', github: 'plataformatec/simple_form'
 gem 'country_select'
 
 # Env variables
