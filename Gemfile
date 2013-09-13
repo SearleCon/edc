@@ -79,6 +79,14 @@ gem 'enumify'
 # Temp Tables
 gem 'temping'
 
+# Font Awesome
+gem "font-awesome-rails"
+
+# Web Fonts
+gem 'google-webfonts-rails'
+
+
+
 
 group :development do
   gem "better_errors"

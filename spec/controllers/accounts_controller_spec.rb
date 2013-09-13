@@ -5,7 +5,7 @@ describe AccountsController do
 
   describe 'GET new' do
     before { get :new }
-    it { should respond_with(:success) }
+
     it { should render_template(:new) }
 
     it 'assigns a new account' do

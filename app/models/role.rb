@@ -16,11 +16,12 @@ class Role < ActiveRecord::Base
   has_many :role_permissions
   has_many :permissions, through: :role_permissions
 
-
   acts_as_tenant :account
 
   validates :name, presence: true
   validates_uniqueness_to_tenant :name
+
+  scope :exclude, -> (*roles) {where.not(name: roles)}
 
   before_save :format_attributes
 

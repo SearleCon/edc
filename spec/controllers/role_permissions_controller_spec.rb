@@ -1,48 +1,31 @@
 require 'spec_helper'
 
 describe RolePermissionsController do
+  let(:user) { FactoryGirl.create(:user) }
+  let(:role) { user.role }
 
-  before (:each) do
-    @user = FactoryGirl.create(:admin)
-    sign_in @user
-  end
+  before { sign_in user }
 
   describe "GET 'edit'" do
+    before { get :edit }
+
+    it { should render_template(:edit) }
+
     it "assigns roles to @roles" do
-      roles = Role.all
-      get :edit
-      expect(assigns(:roles)).to match_array roles
+      expect(assigns(:role_permissions)).to be_an_instance_of(RolePermissionsDecorator)
     end
 
-    it "assigns permissions to @permissions" do
-      permissions = Permission.all
-      get :edit
-      expect(assigns(:permissions)).to match_array permissions
-    end
-
-    it "renders the edit template" do
-      get :edit
-      expect(response).to render_template :edit
-    end
   end
 
   describe "PATCH 'update'" do
-    before (:each) do
-      @role = Role.first
-      @permission = FactoryGirl.create(:permission)
-    end
+    let(:permission){ FactoryGirl.create(:permission) }
+    before {patch :update, roles: { role.id.to_s => {permission_ids: [permission.id]} }  }
+
+    it { should redirect_to(role_permissions_edit_url) }
 
 
     it "updates the permissions on the role" do
-      put :update, roles: { @role.id.to_s => {permission_ids: [@permission.id]} }
-      @role.reload
-      expect(@role.permissions.first).to eq @permission
-    end
-
-
-    it "redirects to the permissions edit page" do
-      put :update, roles: { @role.id.to_s => {permission_ids: [@permission.id]} }
-      expect(response).to redirect_to permissions_edit_url
+      expect(role.permissions.first).to eq permission
     end
   end
 end

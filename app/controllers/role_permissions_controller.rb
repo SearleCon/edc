@@ -1,6 +1,6 @@
 class RolePermissionsController < ApplicationController
   def edit
-    roles = Role.where.not(name: [:admin, current_user.role.name])
+    roles = Role.exclude(:admin, current_user.role_name)
     permissions = Permission.all
     @role_permissions = RolePermissionsDecorator.new(roles: roles, permissions: permissions)
   end
@@ -19,4 +19,5 @@ class RolePermissionsController < ApplicationController
       Role.all.each { |role| params[:roles][role.id] = {permission_ids: []} unless params[:roles].has_key?(role.id.to_s) }
       params.require(:roles).permit!
   end
+
 end

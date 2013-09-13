@@ -6,7 +6,7 @@ describe AlertsController do
 
   describe 'GET index' do
     before { xhr :get, :index }
-    it { should respond_with(:success) }
+
     it { should render_template(:index) }
 
     it 'assigns the alerts' do
