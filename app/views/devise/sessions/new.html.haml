@@ -1,8 +1,9 @@
 %h2 Sign in
+%br
 = simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-vertical' }) do |f|
-  #errors= errors_for resource
   = f.input :email, autofocus: true
   = f.input :password
-  = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+  = f.input :remember_me,  as: :boolean if devise_mapping.rememberable?
   = f.button :submit, "Sign in", class: 'btn-primary'
+%br
 = render "devise/shared/links"

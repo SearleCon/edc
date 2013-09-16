@@ -29,7 +29,7 @@
 #
 
 class User < ActiveRecord::Base
-  include Addressed, Notable
+  include Addressed, Notable, AttributeDefaults
 
 
   # Include default devise modules. Others available are:
@@ -50,21 +50,13 @@ class User < ActiveRecord::Base
   validates_uniqueness_to_tenant :email
   validates_associated :account
 
-  after_initialize :init
-
   def has_role?(role)
     return false unless self.role_name
     self.role_name == role.to_s
   end
 
-
   private
   def defaults
-    {timezone: Time.zone.name}
-  end
-
-  protected
-  def init
-    assign_attributes(defaults) if new_record?
+    { timezone: Time.zone.name }
   end
 end

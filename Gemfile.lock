@@ -13,6 +13,14 @@ GIT
       activemodel (>= 4.0.0, < 4.1)
 
 GIT
+  remote: git://github.com/scambra/devise_invitable.git
+  revision: fb71e7ca15ec3c8e22ee2a58eecf19529085b548
+  specs:
+    devise_invitable (1.2.2)
+      actionmailer (>= 3.2.6, < 5)
+      devise (>= 3.1.0)
+
+GIT
   remote: git://github.com/thomas-mcdonald/bootstrap-sass.git
   revision: c0e12a90ba3e44ab68d3f153411fba3edc400b2a
   specs:
@@ -61,6 +69,7 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap_sortable_rails (0.1.3)
     bootswatch-rails (0.5.0)
       railties (>= 3.1)
     builder (3.1.4)
@@ -100,16 +109,14 @@ GEM
     delayed_job_active_record (4.0.0)
       activerecord (>= 3.0, < 4.1)
       delayed_job (>= 3.0, < 4.1)
-    devise (3.0.3)
+    devise (3.1.0)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
+      thread_safe (~> 0.1)
       warden (~> 1.2.3)
     devise-async (0.8.0)
       devise (>= 2.2, < 3.2)
-    devise_invitable (1.2.1)
-      actionmailer (>= 3.2.6, < 5)
-      devise (~> 3.0.0)
     diff-lcs (1.2.4)
     diffy (3.0.1)
     dropbox-api (0.4.0)
@@ -333,6 +340,7 @@ DEPENDENCIES
   annotate (~> 2.5.0)
   better_errors
   bootstrap-sass!
+  bootstrap_sortable_rails
   bootswatch-rails
   cancan (~> 1.6.10)
   capybara (~> 2.0.2)
@@ -341,9 +349,9 @@ DEPENDENCIES
   database_cleaner (< 1.1.0)
   delayed_job (~> 4.0.0)
   delayed_job_active_record (~> 4.0.0)
-  devise (~> 3.0.0)
+  devise (~> 3.1.0)
   devise-async
-  devise_invitable
+  devise_invitable!
   dropbox-api
   email_spec
   enumify

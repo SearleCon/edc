@@ -4,7 +4,6 @@ class RoleDecorator
     roles.map {|role| new(role)}
   end
 
-
   attr_reader :role, :permissions
 
   def initialize(role)
@@ -14,6 +13,14 @@ class RoleDecorator
 
   def name
     role.name.titleize
+  end
+
+  def user_count
+    role.users.size
+  end
+
+  def to_param
+    role.to_param
   end
 
   def method_missing(method_name, *args, &block)

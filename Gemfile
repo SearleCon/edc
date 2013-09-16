@@ -20,9 +20,9 @@ gem 'normalize-rails'
 gem 'bootswatch-rails'
 
 # Authentication
-gem 'devise', "~> 3.0.0"
+gem 'devise', "~> 3.1.0"
 gem "devise-async"
-gem 'devise_invitable'
+gem 'devise_invitable', github: 'scambra/devise_invitable'
 
 # Authorization
 gem "cancan", "~> 1.6.10"
@@ -85,7 +85,8 @@ gem "font-awesome-rails"
 # Web Fonts
 gem 'google-webfonts-rails'
 
-
+# Bootstrap sortable
+gem 'bootstrap_sortable_rails'
 
 
 group :development do

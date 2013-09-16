@@ -15,6 +15,12 @@ module BootstrapHelper
     end
   end
 
+  def flash_class(level)
+    case level
+      when :notice, :success then 'alert alert-success'
+      when :error, :alert then 'alert alert-danger'
+    end
+  end
 
   def bootstrap_table(*args)
     options = args.extract_options!

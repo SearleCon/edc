@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
 
   before_action :set_timezone
   before_action :set_mailer_host
+  before_action :check_subdomain
 
   private
   def has_layout?
@@ -32,6 +33,10 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(resource_or_scope)
     root_url
+  end
+
+  def check_subdomain
+    redirect_to root_url(subdomain: current_user.subdomain) if current_user && current_user.subdomain != current_subdomain
   end
 
   protected

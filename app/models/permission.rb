@@ -14,8 +14,4 @@ class Permission < ActiveRecord::Base
   has_many :roles, through: :role_permissions
 
   validates :action, :subject, presence: true
-
-  def to_s
-    "#{action.capitalize} #{subject.capitalize.pluralize}".humanize
-  end
 end

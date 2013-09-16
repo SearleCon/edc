@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   before_action :authenticate_user!
 
-  load_and_authorize_resource :user, message: 'Not authorized as an administrator.'
+  load_and_authorize_resource :user, message: 'Not authorized to change user details.'
 
   def index
     @users = User.exclude(current_user)

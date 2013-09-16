@@ -29,7 +29,7 @@ Edc::Application.routes.draw do
 
   devise_for :users, controllers: {registrations: :registrations}
 
-  resources :users, concerns: :notable
+  resources :users, except: [:create, :edit ,:update] , concerns: :notable
 
   namespace :role_permissions do
     get :edit

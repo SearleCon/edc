@@ -1,26 +1,29 @@
-.page-header
-  = link_to users_path, class: 'btn btn-default' do
-    %span.glyphicon.glyphicon-list-alt
-    Back
-  = link_to edit_user_path(@user), class: 'btn btn-primary' do
-    %span.glyphicon.glyphicon-pencil
-    Edit
-  %h3 Show user
+.panel.panel-info
+  .panel-heading
+    User
+  %ul.list-group
+    %li.list-group-item
+      %p
+        %strong Name:
+        = @user.name.presence || 'None'
+    %li.list-group-item
+      %p
+        %strong Email:
+        = mail_to @user.email
+    %li.list-group-item
+      %p
+        %strong Registered:
+        = @user.created_at
+    %li.list-group-item
+      %p
+        %strong Last Sign In:
+        = @user.last_sign_in_at || 'Never signed in'
+    %li.list-group-item
+      %p
+        %strong Role:
+        = (@user.role_name.presence || 'unassigned').capitalize
+    .panel-footer
+      = link_to 'Back', users_path, icon: 'icon-list', class: 'btn btn-default btn-sm'
 
-%dl.dl-horizontal
-  %dt User:
-  %dd= @user.name
-  %dt Email:
-  %dd= mail_to @user.email
-  %dt Registered:
-  %dd= @user.created_at.to_s(:default)
-  %dt Last Sign In:
-  %dd= @user.last_sign_in_at.to_s(:default)
-  %dt Role:
-  %dd= (@user.role_name.presence || 'none').capitalize
-  - if @user.role
-    %dt Permissions:
-    %dl
-      - @user.role_permissions.each do |permission|
-        %dd= permission
+
 

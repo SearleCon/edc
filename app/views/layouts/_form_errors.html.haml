@@ -4,8 +4,8 @@
       .panel-heading
         = "#{pluralize(object.errors.count, 'error')} prevented this record from being saved:"
       .panel-body
-        %ul.icons-ul.list-group
+        %ul.icons-ul
           = list_of(object.errors.full_messages) do |item|
-            = fa_icon("exclamation-sign li", text: item)
+            = fa_icon("exclamation-sign li", text: item.humanize)
 
 

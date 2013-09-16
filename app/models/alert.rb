@@ -10,6 +10,8 @@
 #
 
 class Alert < ActiveRecord::Base
+  include AttributeDefaults
+
   default_scope -> { order(created_at: :desc) }
 
   scope :active, -> { where(active: true)}
@@ -18,5 +20,10 @@ class Alert < ActiveRecord::Base
 
   def dismiss
     update(active: false)
+  end
+
+  private
+  def defaults
+    { content: 'test', active: true }
   end
 end
