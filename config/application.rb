@@ -22,7 +22,10 @@ module Edc
 
     # Exception Handling
     config.exceptions_app = self.routes
-    config.action_dispatch.rescue_responses["CanCan::AccessDenied"] = :forbidden
+    config.action_dispatch.rescue_responses["Pundit::NotAuthorizedError"] = :forbidden
+
+    #Lib
+    config.autoload_paths += %W(#{config.root}/lib)
 
 
     config.generators do |g|

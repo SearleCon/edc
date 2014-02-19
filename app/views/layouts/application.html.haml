@@ -1,24 +1,15 @@
 !!!
 %html
   %head
-    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
-      %title= content_for?(:title) ? yield(:title) : "Edc"
-      %meta{:content => content_for?(:description) ? yield(:description) : "Edc", :name => "description"}
-        = stylesheet_link_tag "application", :media => "all"
-        = javascript_include_tag "application"
-        = google_webfonts_init({google: ['Corben', 'Nobile']})
-        = csrf_meta_tags
-        = yield(:head)
-  %body{:class => "#{controller_name}", "data-action" => action_name, "data-controller" => controller_path}
-    = render 'layouts/navigation'
-    #main{roles: "main"}
-      .container
-        .content
-          .row
-            #main_view.col-md-12
-              = gflash
-              = render 'layouts/messages'
-              = yield
-          %footer
-      / ! end of .container
-    / ! end of #main
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+    %title= content_for?(:title) ? yield(:title) : 'Edc'
+    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Edc'}"}
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body
+    %header
+      = render 'layouts/navigation'
+    %main{:role => "main"}
+      = render 'layouts/messages'
+      = yield

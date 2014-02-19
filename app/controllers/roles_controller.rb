@@ -7,7 +7,6 @@ class RolesController < ApplicationController
 
 
   def index
-   authorize! :read, Role
    @roles = RoleDecorator.build_collection(Role.exclude(:admin, current_user.role_name))
   end
 
@@ -15,7 +14,6 @@ class RolesController < ApplicationController
   end
 
   def create
-    authorize! :create, Role
     @role.save
     respond_with(@role, location: role_permissions_edit_url)
   end

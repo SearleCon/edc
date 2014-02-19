@@ -19,7 +19,9 @@ Edc::Application.routes.draw do
   resources :alerts, only: [:index, :destroy]
 
   constraints(Subdomain) do
-    root to: 'home#index', as: :home
+    root to: 'users#index', as: :home
+
+    match 'management', to: 'management#index', via: :get
   end
 
   authenticated :user do

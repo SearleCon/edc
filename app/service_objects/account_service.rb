@@ -11,9 +11,7 @@ class AccountService
   end
 
   private
-  def create_roles
+   def create_roles
     DEFAULT_ROLES.each { |role| Role.create!(name: role, account: @account) }
-  rescue
-    false
-  end
+   end
 end

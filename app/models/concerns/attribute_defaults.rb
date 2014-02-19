@@ -2,7 +2,7 @@ module AttributeDefaults
   extend ActiveSupport::Concern
 
   included do
-    after_initialize :set_default_attributes
+    after_initialize :set_default_attributes, prepend: true, if: :new_record?
   end
 
   private
@@ -12,8 +12,6 @@ module AttributeDefaults
 
   protected
   def set_default_attributes
-    if new_record?
-     defaults.each { |key, value| write_attribute(key, value) if read_attribute(key).nil? }
-    end
+    defaults.each { |key, value| self[key] ||= value  }
   end
 end

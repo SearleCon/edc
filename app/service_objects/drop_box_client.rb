@@ -1,6 +1,6 @@
 class DropBoxClient
   def initialize(user)
-    @client =  Dropbox::API::Client.new :token => user.drop_box_key, :secret => user.drop_box_secret
+    @client =  Dropbox::API::Client.new token: user.drop_box_key, secret: user.drop_box_secret
   end
 
   def upload(file_name, path_to_file)
@@ -9,7 +9,7 @@ class DropBoxClient
 
   def get_file(name)
     result = @client.find name
-    nil if !result.is_dir
+    nil unless result.is_dir
   end
 
   def get_directory(name)

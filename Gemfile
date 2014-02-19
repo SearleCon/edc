@@ -2,44 +2,36 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 
-
 # Rails
-gem "rails", "~> 4.0.0"
-gem 'jbuilder', '~> 1.0.1'
+gem "rails", "~> 4.0.2"
+gem 'jbuilder'
 gem 'jquery-rails'
-gem 'sass-rails', '~> 4.0.0'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'sass-rails'
+gem 'coffee-rails'
 gem 'uglifier', '~> 1.3.0'
 
 # Frontend
 gem 'hpricot'
 gem 'haml-rails'
-gem 'html2haml'
-gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
+gem 'bootstrap-sass'
 gem 'normalize-rails'
-gem 'bootswatch-rails'
 
 # Authentication
 gem 'devise', "~> 3.1.0"
-gem "devise-async"
-gem 'devise_invitable', github: 'scambra/devise_invitable'
+gem 'devise_invitable'
+
 
 # Authorization
-gem "cancan", "~> 1.6.10"
-
-# Form Builders
-gem 'simple_form', github: 'plataformatec/simple_form'
-gem 'country_select'
+gem 'pundit'
 
 # Env variables
 gem "figaro"
 
 # Multi tenancy
-gem "acts_as_tenant", "~> 0.3.1"
+gem "acts_as_tenant", "~> 0.3.4"
 
-# Background Processing
-gem "delayed_job", "~> 4.0.0"
-gem "delayed_job_active_record", "~> 4.0.0"
+# Background processing
+gem 'sucker_punch', '~> 1.0'
 
 # Pagination
 gem 'kaminari'
@@ -55,7 +47,7 @@ gem 'jquery-turbolinks'
 gem 'turbolinks', '~> 1.3.0'
 
 # App Responders - Sets flash in respond_with()
-gem 'responders', '1.0.0.rc'
+gem 'responders'
 
 # Dates
 gem 'stamp'
@@ -65,10 +57,6 @@ gem 'premailer-rails'
 
 # Fetch time zone
 gem 'temporal-rails'
-
-# Subdomains
-gem 'subdomain-fu', github: 'mbleigh/subdomain-fu'
-
 
 # Static Pages
 gem 'high_voltage'
@@ -82,11 +70,13 @@ gem 'temping'
 # Font Awesome
 gem "font-awesome-rails"
 
-# Web Fonts
-gem 'google-webfonts-rails'
+# Server
+gem 'unicorn'
 
-# Bootstrap sortable
-gem 'bootstrap_sortable_rails'
+
+# Bootstrap Form
+gem 'bootstrap_form'
+
 
 
 group :development do
@@ -95,10 +85,12 @@ group :development do
   gem 'sqlite3'
   gem 'jazz_hands'
   gem 'quiet_assets'
+  gem 'rails_layout'
+  gem "erb2haml"
 end
 
 group :production do
-  gem 'pg'
+  gem "pg", '0.17.0'
 end
 
 group :test do
@@ -110,12 +102,12 @@ group :test do
 
   # Factories
   gem "faker", "~> 1.1.2"
-  gem "factory_girl_rails", "~> 4.2.1"
+  gem "factory_girl_rails"
   gem "database_cleaner", '< 1.1.0'
 
 
   # Matchers
-  gem "shoulda-matchers", "~> 2.4.0.rc1"
+  gem "shoulda-matchers"
   gem 'json_spec'
   gem 'email_spec'
 end

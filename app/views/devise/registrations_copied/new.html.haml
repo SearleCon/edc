@@ -1,0 +1,13 @@
+%h2 Sign up
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-vertical' }) do |f|
+  = render 'layouts/form_errors', object: resource
+  = f.input :name
+  = f.input :email, required: true
+  = f.input :password, required: true
+  = f.input :password_confirmation, required: true
+  = f.input :timezone, as: :time_zone
+  = f.input :role_id, as: :hidden
+
+
+  = f.button :submit, 'Sign up', class: 'btn-primary'
+= render "devise/shared/links"

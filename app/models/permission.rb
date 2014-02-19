@@ -13,5 +13,7 @@ class Permission < ActiveRecord::Base
   has_many :role_permissions
   has_many :roles, through: :role_permissions
 
+  scope :per_subject, ->(subject){ where(subject: subject) }
+
   validates :action, :subject, presence: true
 end

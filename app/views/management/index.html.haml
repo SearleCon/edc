@@ -1,0 +1,20 @@
+.page-header
+  %h1 Management Dashboard
+
+.panel.panel-primary
+  .panel-heading
+    %h3.panel-title
+      Users
+      %span.badge=User.all.size
+  .panel-body
+    = link_to 'View', users_path
+
+.panel.panel-primary
+  .panel-heading
+    %h3.panel-title
+      Roles
+      %span.badge=Role.all.size
+  .panel-body
+    = link_to 'View All', roles_path
+    %br
+    = link_to 'View Permissions', role_permissions_edit_path

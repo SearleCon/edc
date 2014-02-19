@@ -1,28 +1,23 @@
-%nav.navbar.navbar-inverse.navbar-fixed-top{role: 'navigation'}
-  = link_to 'Edc', root_url(host: request.domain), class: 'navbar-brand'
-  %ul.nav.navbar-nav
-    - if user_signed_in?
-      %li
-        = link_to 'Edit Account', edit_user_registration_path
-      - if current_user.has_role? :exec
-        %li= link_to 'Exec', users_path
-      %li
-        = link_to 'Dropbox Setup', dropbox_setup_path, icon: 'icon-dropbox'
-      %li
-        = link_to 'Logout', destroy_user_session_path, method: :delete
-      %li.dropdown
-        %a#management.dropdown-toggle{data: {toggle: 'dropdown'}, href: '#', roles: 'button'}
-          Management
-          %b.caret
-        %ul.dropdown-menu
-          %li{roles: 'presentation'}
-            = link_to 'Add and Remove Roles', roles_path
-          %li{roles: 'presentation'}
-            = link_to 'Manage Role Permissions', role_permissions_edit_path
-          %li{roles: 'presentation'}
-            = link_to 'Users', users_path
-    - else
-      %li
-        = link_to 'Sign up', new_user_registration_path
-      %li
-        = link_to 'Login', new_user_session_path
+-# navigation styled for Bootstrap 3.0
+%nav.navbar.navbar-inverse.navbar-fixed-top
+  .container
+    .navbar-header
+      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to 'Home', root_path, class: 'navbar-brand'
+    .collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        = render 'layouts/navigation_links'
+      %ul.nav.navbar-nav.navbar-right
+        - if user_signed_in?
+          %li.dropdown
+            %a.dropdown-toggle{href: '#', data: {toggle: :dropdown}}
+              Account
+              %b.caret
+            %ul.dropdown-menu
+              %li= link_to 'Edit account', edit_user_registration_path
+              %li.divider
+              %li= link_to 'Logout', destroy_user_session_path, method: :delete
