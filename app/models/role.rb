@@ -13,8 +13,6 @@ class Role < ActiveRecord::Base
   belongs_to :account
   has_many :users
 
-  has_many :role_permissions
-  has_many :permissions, through: :role_permissions
 
   acts_as_tenant :account
 

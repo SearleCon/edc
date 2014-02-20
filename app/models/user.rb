@@ -29,7 +29,6 @@
 #
 
 class User < ActiveRecord::Base
-  include Addressed, Notable, AttributeDefaults
 
 
   # Include default devise modules. Others available are:
@@ -43,20 +42,10 @@ class User < ActiveRecord::Base
   belongs_to :role
 
   delegate :company, :subdomain, :drop_box_key, :drop_box_secret , to: :account, allow_nil: true
-  delegate :name, :permissions, to: :role, prefix: true, allow_nil: true
 
   scope :exclude, -> (user){where.not(id: user)}
 
   validates_uniqueness_to_tenant :email
   validates_associated :account
 
-  def has_role?(role)
-    return false unless self.role_name
-    self.role_name == role.to_s
-  end
-
-  private
-  def defaults
-    { timezone: Time.zone.name }
-  end
 end

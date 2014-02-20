@@ -55,8 +55,6 @@ gem 'stamp'
 # Emails
 gem 'premailer-rails'
 
-# Fetch time zone
-gem 'temporal-rails'
 
 # Static Pages
 gem 'high_voltage'
