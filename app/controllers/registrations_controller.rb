@@ -5,8 +5,12 @@ class RegistrationsController < Devise::RegistrationsController
    respond_with resource
   end
 
-  private
-  def default_role
-    Role.find_by(name: :exec)
+  def create
+    super { |resource| WelcomeMailJob.new.async.perform(resource) }
   end
+
+  private
+   def default_role
+     Role.find_by(name: :exec)
+   end
 end

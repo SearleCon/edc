@@ -6,8 +6,10 @@ class AccountService
   end
 
   def create
-    Account.transaction { raise ActiveRecord::Rollback unless @account.save && create_roles }
+    Account.transaction { @account.save! and create_roles }
     @account
+  rescue
+    false
   end
 
   private

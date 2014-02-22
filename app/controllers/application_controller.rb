@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
 
   private
   def has_layout?
-    false unless request.xhr?
+    false if request.xhr?
   end
 
 

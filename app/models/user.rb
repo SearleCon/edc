@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
   acts_as_tenant :account
 
   belongs_to :account, autosave: true
@@ -46,6 +47,5 @@ class User < ActiveRecord::Base
   scope :exclude, -> (user){where.not(id: user)}
 
   validates_uniqueness_to_tenant :email
-  validates_associated :account
 
 end

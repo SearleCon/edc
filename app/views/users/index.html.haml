@@ -1,13 +1,13 @@
 .panel.panel-default
   .panel-heading
-    #{glyph(:user)} Manage Users
-  - bootstrap_table headers:['UserName', 'Email', 'Role', 'Registered'], types: [:bordered, :striped ,:condensed] do
+    #{fa_icon(:user)} Manage Users
+  - bootstrap_table headers:['UserName', 'Email', 'Role', 'Registered', 'Actions'], types: [:bordered, :striped] do
     - @users.each do |user|
       %tr[user]
         %td= link_to user.name, user_path(user)
         %td= mail_to user.email
         %td= user.created_at
-        %td= (user.role_name.presence || 'none').capitalize
+        %td= (user.role.name.presence || 'none').capitalize
         %td= link_to "Change Role", "#role-options-#{user.id}",icon: 'icon-cog icon-large' ,data: {toggle: "modal"}, class: 'btn btn-warning'
         %td= link_to 'Delete', user_path(user),icon: 'icon-remove-sign', method: :delete, data: { confirm: 'Are you sure you want to delete this user?' }, class: 'btn btn-danger'
 = link_to 'Add', new_user_invitation_path, icon: 'icon-plus-sign icon-large', class: 'btn btn-primary'

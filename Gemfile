@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '2.0.0'
+ruby '2.1.0'
 
 # Rails
-gem "rails", "~> 4.0.2"
+gem "rails", "~> 4.1.0.rc1"
 gem 'jbuilder'
 gem 'jquery-rails'
 gem 'sass-rails'
@@ -25,7 +25,7 @@ gem 'devise_invitable'
 gem 'pundit'
 
 # Env variables
-gem "figaro"
+gem 'figaro', github: 'laserlemon/figaro'
 
 # Multi tenancy
 gem "acts_as_tenant", "~> 0.3.4"
@@ -52,9 +52,6 @@ gem 'responders'
 # Dates
 gem 'stamp'
 
-# Emails
-gem 'premailer-rails'
-
 
 # Static Pages
 gem 'high_voltage'
@@ -75,6 +72,10 @@ gem 'unicorn'
 # Bootstrap Form
 gem 'bootstrap_form'
 
+# Postgres
+gem 'pg'
+
+
 
 
 group :development do
@@ -85,10 +86,11 @@ group :development do
   gem 'quiet_assets'
   gem 'rails_layout'
   gem "erb2haml"
+  gem 'spring'
+  gem 'flatten_migrations'
 end
 
 group :production do
-  gem "pg", '0.17.0'
 end
 
 group :test do
@@ -96,6 +98,7 @@ group :test do
   gem 'rspec-rails', '~> 2.0'
   gem "capybara", "~> 2.0.2"
   gem "launchy", "~> 2.2.0"
+  gem "minitest"
 
 
   # Factories
@@ -106,6 +109,5 @@ group :test do
 
   # Matchers
   gem "shoulda-matchers"
-  gem 'json_spec'
   gem 'email_spec'
 end

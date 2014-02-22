@@ -2,8 +2,8 @@ class WelcomeMailJob
 
   include SuckerPunch::Job
 
-  def perform(user_id)
-    user = User.find(user_id)
-    UserMailer.welcome(user).deliver
+  def perform(user)
+    UserMailer.welcome(user.id).deliver
   end
+
 end

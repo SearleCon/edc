@@ -27,7 +27,6 @@ module Edc
     #Lib
     config.autoload_paths += %W(#{config.root}/lib)
 
-
     config.generators do |g|
       g.test_framework :rspec,
                        fixtures: true,

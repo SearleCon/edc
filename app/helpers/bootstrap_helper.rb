@@ -24,22 +24,25 @@ module BootstrapHelper
 
   def bootstrap_table(*args)
     options = args.extract_options!
-    options[:html_options] ? html_options = options[:html_options] : html_options = {}
-    html_options[:class] ||= []
-    html_options[:class] = table_classes(options[:types])  <<  html_options[:class].split
+    headers = options.delete(:headers) { [] }
+    types = options.delete(:types) { [] }
+    html_options = options.delete(:html_options) { {} }
+    html_options[:class] ||= ''
+    html_options[:class] << table_classes(types).join(" ").prepend(" ")
     haml_tag :table, html_options do
-    table_headers(options[:headers])
-    haml_tag :tbody do
-      yield if block_given?
+     table_headers(headers)
+     haml_tag :tbody do
+       yield if block_given?
+     end
     end
-    end
-
   end
 
-  def table_classes(classes)
+  def table_classes(types)
     table_classes = %w(table)
-    classes.each do |c|
-      table_classes << TABLE_CLASSES[c] if TABLE_CLASSES.has_key?(c)
+    if types.any?
+      types.each do |type|
+        table_classes << TABLE_CLASSES[type] if TABLE_CLASSES.has_key?(type)
+      end
     end
     table_classes
   end

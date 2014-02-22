@@ -1,10 +1,10 @@
 class UserSanitizer < Devise::ParameterSanitizer
   def sign_up
-    default_params.permit(:name,:timezone, :email, :password, :password_confirmation, :role_id, account_attributes: [:company, :subdomain, :id] )
+    default_params.permit(:name, :email, :password, :password_confirmation)
   end
 
   def account_update
-    default_params.permit(:name,:timezone, :email, :password, :password_confirmation, :current_password, account_attributes: [:company, :subdomain, :id] )
+    default_params.permit(:name, :email, :password, :password_confirmation, :current_password )
   end
 
   def accept_invitation
