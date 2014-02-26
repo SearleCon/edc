@@ -13,6 +13,7 @@ gem 'hpricot'
 gem 'haml-rails'
 gem 'bootstrap-sass'
 gem 'normalize-rails'
+gem 'bootbox-rails'
 
 # Authentication
 gem 'devise', "~> 3.1.0"

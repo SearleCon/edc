@@ -3,4 +3,4 @@
   %td= mail_to user.email
   %td= user.created_at
   %td= user.last_sign_in_at.presence || 'None'
-  %td= link_to 'Remove', user_path(user), method: :delete, data: { confirm: 'Are you sure you want to delete this user?' }, class: 'btn btn-danger'
+  %td= link_to 'Remove', user_path(user), method: :delete, data: { confirm: 'Are you sure you want to delete this user?' }, class: 'btn btn-mini btn-danger'
