@@ -25,15 +25,11 @@ Edc::Application.routes.draw do
   authenticated :user do
     root to: 'high_voltage/pages#show', id: 'home', as: :authenticated_root
   end
-  root to: 'high_voltage/pages#show', id: 'home'
 
   devise_for :users, controllers: {registrations: :registrations}
 
-  resources :users, except: [:create, :edit ,:update] , concerns: :notable
-
-  namespace :role_permissions do
-    get :edit
-    patch :update
+  scope '/manage' do
+   resources :users, only: [:new, :create, :destroy]
   end
 
   match '(errors)/:status', to: 'errors#show', constraints: {status: /\d{3}/}, via: :all

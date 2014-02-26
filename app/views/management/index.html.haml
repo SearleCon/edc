@@ -6,15 +6,12 @@
     %h3.panel-title
       Users
       %span.badge=User.all.size
-  .panel-body
-    = link_to 'View', users_path
+  - bootstrap_table headers:['UserName', 'Email', 'Registered', 'Last Sign In' ,'Actions'], types: [:bordered, :striped] do
+    = render @users
 
-.panel.panel-primary
-  .panel-heading
-    %h3.panel-title
-      Roles
-      %span.badge=Role.all.size
-  .panel-body
-    = link_to 'View All', roles_path
-    %br
-    = link_to 'View Permissions', role_permissions_edit_path
+  .panel-footer
+    = link_to 'Add User', new_user_path, class: 'btn btn-primary'
+
+
+
+

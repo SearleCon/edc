@@ -32,14 +32,12 @@ class ApplicationController < ActionController::Base
     false if request.xhr?
   end
 
-
-
   def set_mailer_host
     ActionMailer::Base.default_url_options[:host] = request.host_with_port
   end
 
   protected
   def devise_parameter_sanitizer
-    UserSanitizer.new(User, :user, params)
+    Devise::Sanitizers::UserSanitizer.new(User, :user, params)
   end
 end

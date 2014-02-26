@@ -33,7 +33,6 @@ class NotesController < ApplicationController
   end
 
   def note_params
-    permitted_params.note if params[:note]
   end
 
 

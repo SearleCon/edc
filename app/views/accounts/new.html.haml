@@ -1,9 +1,8 @@
 .page-header
   %h2 Setup Account
-%hr
 
-= bootstrap_form_for @account do  |f|
-  = f.alert_message "Please fix the following errors:"
+= bootstrap_form_for @account do |f|
+  = f.alert_message "Please fix the errors below:"
   = f.text_field :company
   = f.text_field :subdomain, help: 'This will generate the site name you will use for your company eg. test.app.com'
   = f.submit 'Create', class: 'btn btn-primary'

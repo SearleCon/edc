@@ -6,14 +6,17 @@ class AccountService
   end
 
   def create
-    Account.transaction { @account.save! and create_roles }
-    @account
-  rescue
-    false
+   if @account.valid?
+    Account.transaction do
+      @account.save!
+      create_roles!
+    end
+   end
+   @account
   end
 
   private
-   def create_roles
+   def create_roles!
     DEFAULT_ROLES.each { |role| Role.create!(name: role, account: @account) }
    end
 end

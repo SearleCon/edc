@@ -21,11 +21,11 @@ class Role < ActiveRecord::Base
 
   scope :exclude, -> (*roles) {where.not(name: roles)}
 
-  before_save :format_attributes
+  before_validation :format_attributes
 
   protected
-  def format_attributes
-    self.name.downcase!
-  end
+    def format_attributes
+      name.downcase!
+    end
 
 end

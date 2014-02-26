@@ -4,17 +4,16 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, only: [:update, :destroy]
 
-
-  def index
-    @users = User.all
+  def new
+    @user = User.new
   end
 
-
-
-  def update
-    authorize @user
-    @user.update(user_params)
-    respond_with(@user, location: users_path)
+  def create
+    @user = User.new(user_params)
+    password = Devise.friendly_token.first(8)
+    @user.password = password
+    RegisterUserJob.new.async.perform(@user, password) if @user.save
+    respond_with @user, location: management_url
   end
     
   def destroy
@@ -29,6 +28,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      permitted_params.user
+      params.require(:user).permit(:name, :email, :role_id)
     end
 end

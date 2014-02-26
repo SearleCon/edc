@@ -28,6 +28,9 @@ module Edc
     config.autoload_paths += %W(#{config.root}/lib)
 
     config.generators do |g|
+      g.stylesheets = false
+      g.javascripts = false
+      g.helper      = false
       g.test_framework :rspec,
                        fixtures: true,
                        view_specs: false,

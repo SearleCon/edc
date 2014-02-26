@@ -15,10 +15,11 @@ module BootstrapHelper
     end
   end
 
+
   def flash_class(level)
-    case level
-      when :notice, :success then 'alert alert-success'
-      when :error, :alert then 'alert alert-danger'
+    case level.to_sym
+      when :notice then 'alert alert-success'
+      when :error then 'alert alert-danger'
     end
   end
 
@@ -27,8 +28,7 @@ module BootstrapHelper
     headers = options.delete(:headers) { [] }
     types = options.delete(:types) { [] }
     html_options = options.delete(:html_options) { {} }
-    html_options[:class] ||= ''
-    html_options[:class] << table_classes(types).join(" ").prepend(" ")
+    html_options[:class] = [html_options[:class], table_classes(types)].compact.join(' ')
     haml_tag :table, html_options do
      table_headers(headers)
      haml_tag :tbody do

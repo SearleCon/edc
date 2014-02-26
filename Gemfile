@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-ruby '2.1.0'
-
 # Rails
 gem "rails", "~> 4.1.0.rc1"
 gem 'jbuilder'
@@ -18,14 +16,11 @@ gem 'normalize-rails'
 
 # Authentication
 gem 'devise', "~> 3.1.0"
-gem 'devise_invitable'
 
 
 # Authorization
 gem 'pundit'
 
-# Env variables
-gem 'figaro', github: 'laserlemon/figaro'
 
 # Multi tenancy
 gem "acts_as_tenant", "~> 0.3.4"
@@ -36,8 +31,6 @@ gem 'sucker_punch', '~> 1.0'
 # Pagination
 gem 'kaminari'
 
-# Notifications
-gem "gritter", "1.0.3"
 
 # DropBox
 gem "dropbox-api"
@@ -49,15 +42,8 @@ gem 'turbolinks', '~> 1.3.0'
 # App Responders - Sets flash in respond_with()
 gem 'responders'
 
-# Dates
-gem 'stamp'
-
-
 # Static Pages
 gem 'high_voltage'
-
-# Enums
-gem 'enumify'
 
 # Temp Tables
 gem 'temping'
@@ -68,26 +54,18 @@ gem "font-awesome-rails"
 # Server
 gem 'unicorn'
 
-
-# Bootstrap Form
-gem 'bootstrap_form'
-
 # Postgres
 gem 'pg'
-
-
 
 
 group :development do
   gem "better_errors"
   gem 'annotate', '~> 2.5.0'
-  gem 'sqlite3'
   gem 'jazz_hands'
   gem 'quiet_assets'
   gem 'rails_layout'
   gem "erb2haml"
   gem 'spring'
-  gem 'flatten_migrations'
 end
 
 group :production do

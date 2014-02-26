@@ -1,3 +1,3 @@
-Dropbox::API::Config.app_key    = ENV['DROPBOX_APP_KEY']
-Dropbox::API::Config.app_secret = ENV['DROPBOX_APP_SECRET']
-Dropbox::API::Config.mode       = ENV['DROPBOX_APP_MODE']
+Dropbox::API::Config.app_key    = Rails.application.secrets.dropbox_app_key
+Dropbox::API::Config.app_secret = Rails.application.secrets.dropbox_app_secret
+Dropbox::API::Config.mode       = Rails.application.secrets.dropbox_app_mode

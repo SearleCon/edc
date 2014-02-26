@@ -17,15 +17,7 @@
 #  updated_at             :datetime         not null
 #  name                   :string(255)
 #  account_id             :integer
-#  timezone               :string(255)
 #  role_id                :integer
-#  invitation_token       :string(255)
-#  invitation_created_at  :datetime
-#  invitation_sent_at     :datetime
-#  invitation_accepted_at :datetime
-#  invitation_limit       :integer
-#  invited_by_id          :integer
-#  invited_by_type        :string(255)
 #
 
 require 'spec_helper'

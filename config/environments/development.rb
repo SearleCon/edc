@@ -10,7 +10,7 @@ Edc::Application.configure do
   config.eager_load = false
 
   # Show full error reports and disable caching
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
   # ActionMailer Config
@@ -21,14 +21,15 @@ Edc::Application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default :charset => "utf-8"
 
+
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: "example.com",
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"]
+      address: Rails.application.secrets.gmail_address,
+      port: Rails.application.secrets.gmail_port,
+      domain: 'edc',
+      authentication: 'plain',
+      enable_starttls_auto: true,
+      user_name: Rails.application.secrets.gmail_username,
+      password: Rails.application.secrets.gmail_password
   }
 
 
