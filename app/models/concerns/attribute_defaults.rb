@@ -6,12 +6,12 @@ module AttributeDefaults
   end
 
   private
-  def defaults
-    {}
-  end
+    def defaults
+      {}
+    end
 
   protected
-  def set_default_attributes
-    defaults.each { |key, value| self[key] ||= value  }
-  end
+    def set_default_attributes
+      defaults.each { |key, value| self[key] ||= value  }
+    end
 end
