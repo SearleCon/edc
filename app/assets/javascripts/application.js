@@ -17,6 +17,8 @@
 //= require bootstrap
 //= require bootbox
 //= require select2
+//= require dataTables/jquery.dataTables
+//= require dataTables/jquery.dataTables.bootstrap3
 //= require turbolinks
 //= require_tree .
 
@@ -29,10 +31,17 @@ $(document).ready(function() {
         }
     });
 
-    $('select').each(function() {
-        $(this).select2({
-            width: 'copy'
-        });
+    $('select').select2({width: 'resolve'});
+
+    $('.datatable').dataTable({
+        sPaginationType: "bootstrap",
+        aoColumnDefs: [
+            {
+              bSearchable: false,
+              bSortable: false,
+              aTargets: [-1]
+            }
+        ]
     });
 
 });

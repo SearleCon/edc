@@ -6,7 +6,7 @@
     %h3.panel-title
       Users
       %span.badge=@users.length
-  - bootstrap_table headers:['UserName', 'Email', 'Registered', 'Last Sign In' ,'Actions'], types: [:bordered, :striped] do
+  - bootstrap_table headers:['Name', 'Email', 'Registered', 'Last Sign In' ,'Actions'], types: [:bordered, :striped] do
     = render @users
 
   .panel-footer

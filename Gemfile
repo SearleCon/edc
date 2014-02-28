@@ -15,7 +15,7 @@ gem 'bootstrap-sass'
 gem 'normalize-rails'
 gem 'bootbox-rails'
 gem 'select2-rails'
-
+gem 'jquery-datatables-rails'
 
 # Authentication
 gem 'devise', "~> 3.1.0"
