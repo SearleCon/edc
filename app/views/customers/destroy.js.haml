@@ -1,0 +1,3 @@
+table = $(".datatable").dataTable();
+row = $("##{dom_id(@customer)}");
+row.fadeOut('slow',function() { table.fnDeleteRow(table.$($(this))[0]);});

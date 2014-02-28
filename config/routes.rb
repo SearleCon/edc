@@ -21,7 +21,7 @@ Edc::Application.routes.draw do
 
   constraints(Subdomain) do
     match 'management', to: 'management#index', via: :get
-    resources :customers, only: [:index]
+    resources :customers, only: [:index, :show, :destroy]
   end
 
   authenticated :user do

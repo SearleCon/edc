@@ -1,0 +1,8 @@
+.page-header
+  = link_to fa_icon('arrow-circle-left', text: 'Back'),customers_path, class: 'btn btn-default'
+  %h1 Show Customer
+
+%dl.dl-horizontal
+  - @customer.attributes.except(:id).each do |a, v|
+    %dt= human_name(a)
+    %dd= v

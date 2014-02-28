@@ -1,0 +1,11 @@
+%tr[customer]
+  %td= customer.name
+  %td= customer.surname
+  %td
+    = link_to fa_icon('info-circle', text: 'View'), customer, class: 'btn btn-sm btn-info'
+    = link_to fa_icon('times-circle', text: 'Remove'), customer, data: {confirm: 'Are you sure you wish to destroy this customer?'} ,class: 'btn btn-sm btn-danger', method: :delete, remote: true
+
+
+
+
+

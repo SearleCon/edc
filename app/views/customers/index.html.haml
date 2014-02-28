@@ -2,12 +2,4 @@
   %h2 #{fa_icon(:users)} Customers
 
 - bootstrap_table headers:['Name', 'Surname', 'Actions'], types: [:striped, :hover, :bordered], html_options: {class: 'datatable'} do
-  - @customers.each do |c|
-    %tr[c]
-      %td= c.name
-      %td= c.surname
-      %td= link_to 'Customers', customers_path
-
-
-
-
+  = render @customers
