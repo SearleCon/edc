@@ -1,8 +1,8 @@
 .page-header
   %h2 Setup Account
 
-= bootstrap_form_for @account do |f|
+= bootstrap_form_for @account, data: {validate: true} do |f|
   = f.alert_message "Please fix the errors below:"
-  = f.text_field :company
-  = f.text_field :subdomain, help: 'This will generate the site name you will use for your company eg. test.app.com'
+  = f.text_field :company, data: { rule_required: true }
+  = f.text_field :subdomain, help: 'This will generate the site name you will use for your company eg. test.app.com', data: {rule_required: true, rule_remote: account_subdomain_exists_url, msg_remote: 'This subdomain is already in use.', rule_format: '^[a-z0-9]+$', rule_maxlength: 32 }
   = f.submit 'Create', class: 'btn btn-primary'

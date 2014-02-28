@@ -14,9 +14,14 @@ gem 'haml-rails'
 gem 'bootstrap-sass'
 gem 'normalize-rails'
 gem 'bootbox-rails'
+gem 'select2-rails'
+
 
 # Authentication
 gem 'devise', "~> 3.1.0"
+
+# Client Side validations
+gem 'jquery-validation-rails'
 
 
 # Authorization

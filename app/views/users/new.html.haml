@@ -2,11 +2,11 @@
   %h2
     #{fa_icon(:user)} New User
 
-= bootstrap_form_for @user, url: users_path do |f|
+= bootstrap_form_for @user, url: users_path, data: {validate: true} do |f|
   = f.alert_message "Please fix the errors below:"
-  = f.text_field :name
-  = f.email_field :email
-  = f.collection_select :role_id, Role.all, :id, :name, prompt: true
+  = f.text_field :name, data: {rule_required: true}
+  = f.email_field :email, data: {rule_required: true, rule_email:  true}
+  = f.collection_select :role_id, Role.all, :id, :name, {prompt: true}, {data: {rule_required: true}}
   = f.primary 'Create'
 
 

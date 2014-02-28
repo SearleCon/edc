@@ -9,6 +9,8 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require framework_and_overrides
+ *= require select2
+ *= require bootstrap3select2
  *= require_self
 
  */

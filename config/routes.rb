@@ -5,6 +5,7 @@ Edc::Application.routes.draw do
   end
 
   resources :accounts, only: [:new, :create]
+  match 'account_subdomain_exists', to: 'accounts#account_subdomain_exists', via: :get
 
   resources :roles, except: [:edit, :update, :show]
 
@@ -20,6 +21,7 @@ Edc::Application.routes.draw do
 
   constraints(Subdomain) do
     match 'management', to: 'management#index', via: :get
+    resources :customers, only: [:index]
   end
 
   authenticated :user do

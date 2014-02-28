@@ -13,33 +13,28 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.turbolinks
+//= require jquery.validate
 //= require bootstrap
 //= require bootbox
+//= require select2
 //= require turbolinks
 //= require_tree .
 
 
-$.rails.allowAction = function(link) {
-    if (!link.attr('data-confirm')) {
-        return true;
-    }
-    $.rails.showConfirmDialog(link);
-    return false;
-};
-
-$.rails.confirmed = function(link) {
-    link.removeAttr('data-confirm');
-    return link.trigger('click.rails');
-};
-
-$.rails.showConfirmDialog = function(link) {
-    var html, message;
-    message = link.attr('data-confirm');
-    bootbox.confirm(message, function(result) {
-      if (result){
-       return $.rails.confirmed(link);
-      }
+$(document).ready(function() {
+    $('form').each(function() {
+        if($(this).data('validate'))
+        {
+           $(this).validate();
+        }
     });
-};
+
+    $('select').each(function() {
+        $(this).select2({
+            width: 'copy'
+        });
+    });
+
+});
 
 
