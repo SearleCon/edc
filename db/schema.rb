@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140228131933) do
+ActiveRecord::Schema.define(version: 20140303064456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 20140228131933) do
     t.datetime "updated_at",      null: false
     t.string   "drop_box_key"
     t.string   "drop_box_secret"
+  end
+
+  create_table "activities", force: true do |t|
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "subject_id",   null: false
+    t.string   "subject_type", null: false
+    t.string   "name",         null: false
+    t.string   "detail",       null: false
+    t.integer  "user_id",      null: false
   end
 
   create_table "addresses", force: true do |t|
@@ -44,6 +54,18 @@ ActiveRecord::Schema.define(version: 20140228131933) do
     t.boolean  "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "applications", force: true do |t|
+    t.datetime "application_date"
+    t.integer  "status",           default: 0
+    t.integer  "customer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "programme_id"
+    t.date     "follow_up_date"
+    t.integer  "created_by_id"
+    t.integer  "updated_by_id"
   end
 
   create_table "attachments", force: true do |t|

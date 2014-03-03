@@ -17,6 +17,9 @@ gem 'bootbox-rails'
 gem 'select2-rails'
 gem 'jquery-datatables-rails'
 
+# Decorator
+gem 'draper', '~> 1.3'
+
 # Authentication
 gem 'devise', "~> 3.1.0"
 

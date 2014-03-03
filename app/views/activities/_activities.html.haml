@@ -1,0 +1,11 @@
+- if activities.any?
+  %ul.panel
+    - activities.each do |activity|
+      %li.list-unstyled
+        %h4
+          =activity.name
+          %small.text-muted= "by #{activity.username}"
+        %p
+          %small.text-muted= activity.occurred
+        %p= activity.detail
+

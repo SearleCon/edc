@@ -3,6 +3,11 @@
   %h1 Show Customer
 
 %dl.dl-horizontal
-  - @customer.attributes.except(:id).each do |a, v|
-    %dt= human_name(a)
-    %dd= v
+  %dt Name:
+  %dd= customer.name
+  %dt Surname:
+  %dd= customer.surname
+
+
+= render 'activities/activities' , activities: customer.recent_activities
+

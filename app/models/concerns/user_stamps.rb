@@ -10,6 +10,7 @@ module UserStamps
 
   protected
     def set_user_stamps
+      return false unless modifier
       self.created_by = modifier if new_record?
       self.updated_by = modifier
     end
