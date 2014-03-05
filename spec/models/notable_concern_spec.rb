@@ -21,6 +21,6 @@ describe Notable do
   let(:wrapper){ Dummy.new }
 
   it "should create a has_many association" do
-    wrapper.should have_many(:notes)
+    wrapper.should have_many(:comments)
   end
 end

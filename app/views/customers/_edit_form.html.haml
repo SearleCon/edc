@@ -1,0 +1,5 @@
+= bootstrap_form_for @customer, data: {validate: true}, remote: true do |f|
+  = f.alert_message "Please fix the errors below:"
+  = f.text_field :name, data: {rule_required: true}
+  = f.text_field :surname, data: {rule_required: true}
+  = f.primary 'Save'

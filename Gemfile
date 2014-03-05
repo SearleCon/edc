@@ -31,9 +31,6 @@ gem 'jquery-validation-rails'
 gem 'pundit'
 
 
-# Multi tenancy
-gem "acts_as_tenant", "~> 0.3.4"
-
 # Background processing
 gem 'sucker_punch', '~> 1.0'
 
@@ -65,6 +62,10 @@ gem 'unicorn'
 
 # Postgres
 gem 'pg'
+
+
+# Papertrail
+gem 'paper_trail', '~> 3.0.0'
 
 
 group :development do

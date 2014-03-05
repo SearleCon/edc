@@ -1,13 +1,19 @@
-.page-header
-  = link_to fa_icon('arrow-circle-left', text: 'Back'),customers_path, class: 'btn btn-default'
-  %h1 Show Customer
-
-%dl.dl-horizontal
-  %dt Name:
-  %dd= customer.name
-  %dt Surname:
-  %dd= customer.surname
-
-
-= render 'activities/activities' , activities: customer.recent_activities
+.section
+  .sidebar
+    .panel.panel-default
+      .panel-heading
+        =fa_icon(:bars, text: 'Menu')
+      %ul.list-group
+        %li.list-group-item
+          = link_to fa_icon(:edit, text: 'Edit'), edit_customer_path(customer), remote: true
+        %li.list-group-item
+          = link_to fa_icon(:inbox, text: 'Applications'), customers_path
+        %li.list-group-item
+          = link_to fa_icon(:tasks, text: 'Timeline'), customers_path
+        %li.list-group-item
+          = link_to fa_icon('arrow-circle-left', text: 'Customers'), customers_path
+  .content-with-sidebar
+    #details.well
+      = render 'details'
+    = render 'comments/comments', commentable: customer
 

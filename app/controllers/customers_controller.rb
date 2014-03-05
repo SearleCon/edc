@@ -1,7 +1,7 @@
 class CustomersController < ApplicationController
   responders :flash
 
-  before_action :set_customer, only: [:show, :destroy]
+  before_action :set_customer, only: [:edit, :show, :destroy,  :update]
 
   decorates_assigned :customer
 
@@ -9,7 +9,16 @@ class CustomersController < ApplicationController
     @customers = Customer.all
   end
 
+  def edit
+    sleep 5
+  end
+
   def show; end
+
+  def update
+    @customer.update(customer_params)
+    respond_with @customer
+  end
 
   def destroy
     @customer.destroy
@@ -19,6 +28,10 @@ class CustomersController < ApplicationController
   private
    def set_customer
      @customer = Customer.find(params[:id])
+   end
+
+   def customer_params
+     params.require(:customer).permit(:name, :surname)
    end
 
    def interpolation_options

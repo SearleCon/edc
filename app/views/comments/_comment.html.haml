@@ -1,0 +1,7 @@
+%li.list-group-item[comment]
+  .content= comment.content
+  %br
+  %p
+    %small.text-muted
+      = "Posted at #{fa_icon('clock-o', text: "#{comment.created_at}")}".html_safe
+      by #{comment.user.email}

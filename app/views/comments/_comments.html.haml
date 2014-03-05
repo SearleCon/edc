@@ -1,0 +1,12 @@
+.panel.panel-default
+  .panel-heading
+    %h3.panel-title
+      #{fa_icon(:comments, text: 'Recent Comments')}
+      .pull-right= link_to 'Add comment', new_polymorphic_path([commentable, Comment]), remote: true
+  .panel-body
+    = render 'comments/form', commentable: commentable
+  %ul.list-group{id: :comments}
+    = render commentable.comments
+
+
+

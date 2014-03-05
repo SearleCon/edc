@@ -28,8 +28,6 @@ class User < ActiveRecord::Base
   devise  :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  acts_as_tenant :account
-
   belongs_to :account
   belongs_to :role
 
@@ -37,8 +35,6 @@ class User < ActiveRecord::Base
   delegate :name, to: :role, prefix: true, allow_nil: true
 
   scope :excluding, -> (user){where.not(id: user)}
-
-  validates_uniqueness_to_tenant :email
 
   def has_role?(value)
      role_name == value.to_s

@@ -14,10 +14,7 @@ class Role < ActiveRecord::Base
   has_many :users
 
 
-  acts_as_tenant :account
-
   validates :name, presence: true
-  validates_uniqueness_to_tenant :name
 
   scope :exclude, -> (*roles) {where.not(name: roles)}
 

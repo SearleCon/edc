@@ -35,7 +35,7 @@ describe User do
   end
 
   describe 'Notable' do
-    it { should have_many(:notes) }
+    it { should have_many(:comments) }
   end
 
 

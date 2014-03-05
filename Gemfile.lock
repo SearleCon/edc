@@ -27,9 +27,6 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
-    acts_as_tenant (0.3.4)
-      rails (>= 3.1)
-      request_store (>= 1.0.5)
     addressable (2.3.5)
     annotate (2.5.0)
       rake
@@ -145,7 +142,7 @@ GEM
       pry-remote (>= 0.1.7)
       pry-stack_explorer (~> 0.4.9)
       railties (>= 3.0, < 5.0)
-    jbuilder (2.0.3)
+    jbuilder (2.0.4)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
     jquery-datatables-rails (1.12.2)
@@ -173,12 +170,15 @@ GEM
     mime-types (1.25.1)
     mini_portile (0.5.2)
     minitest (5.3.0)
-    multi_json (1.8.4)
+    multi_json (1.9.0)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     normalize-rails (3.0)
     oauth (0.4.7)
     orm_adapter (0.5.0)
+    paper_trail (3.0.0)
+      activerecord (>= 3.0, < 5.0)
+      activesupport (>= 3.0, < 5.0)
     pg (0.17.1)
     polyglot (0.3.4)
     posix-spawn (0.3.8)
@@ -310,7 +310,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts_as_tenant (~> 0.3.4)
   annotate (~> 2.5.0)
   better_errors
   bootbox-rails
@@ -339,6 +338,7 @@ DEPENDENCIES
   launchy (~> 2.2.0)
   minitest
   normalize-rails
+  paper_trail (~> 3.0.0)
   pg
   pundit
   quiet_assets

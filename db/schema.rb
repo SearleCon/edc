@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140303064456) do
+ActiveRecord::Schema.define(version: 20140303120122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,16 +23,6 @@ ActiveRecord::Schema.define(version: 20140303064456) do
     t.datetime "updated_at",      null: false
     t.string   "drop_box_key"
     t.string   "drop_box_secret"
-  end
-
-  create_table "activities", force: true do |t|
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "subject_id",   null: false
-    t.string   "subject_type", null: false
-    t.string   "name",         null: false
-    t.string   "detail",       null: false
-    t.integer  "user_id",      null: false
   end
 
   create_table "addresses", force: true do |t|
@@ -64,8 +54,6 @@ ActiveRecord::Schema.define(version: 20140303064456) do
     t.datetime "updated_at"
     t.integer  "programme_id"
     t.date     "follow_up_date"
-    t.integer  "created_by_id"
-    t.integer  "updated_by_id"
   end
 
   create_table "attachments", force: true do |t|
@@ -76,26 +64,23 @@ ActiveRecord::Schema.define(version: 20140303064456) do
     t.datetime "updated_at",      null: false
   end
 
+  create_table "comments", force: true do |t|
+    t.string   "content"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "user_id"
+  end
+
+  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
+
   create_table "customers", force: true do |t|
     t.string   "name"
     t.string   "surname"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "created_by_id"
-    t.integer  "updated_by_id"
   end
-
-  create_table "notes", force: true do |t|
-    t.string   "content"
-    t.integer  "notable_id"
-    t.string   "notable_type"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.string   "noted_by"
-    t.boolean  "trashed",      default: false
-  end
-
-  add_index "notes", ["notable_id", "notable_type"], name: "index_notes_on_notable_id_and_notable_type", using: :btree
 
   create_table "programmes", force: true do |t|
     t.string   "name"
@@ -133,5 +118,16 @@ ActiveRecord::Schema.define(version: 20140303064456) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "versions", force: true do |t|
+    t.string   "item_type",  null: false
+    t.integer  "item_id",    null: false
+    t.string   "event",      null: false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+  end
+
+  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
 end

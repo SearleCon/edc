@@ -22,7 +22,6 @@
 //= require turbolinks
 //= require_tree .
 
-
 $(document).ready(function() {
     $('form').each(function() {
         if($(this).data('validate'))
@@ -43,7 +42,6 @@ $(document).ready(function() {
             }
         ]
     });
-
 });
 
 

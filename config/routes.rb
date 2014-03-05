@@ -1,7 +1,7 @@
 Edc::Application.routes.draw do
   # Concerns
-  concern :notable do |options|
-    resources :notes, options
+  concern :commentable do |options|
+    resources :comments, options
   end
 
   resources :accounts, only: [:new, :create]
@@ -19,10 +19,8 @@ Edc::Application.routes.draw do
   #Alerts
   resources :alerts, only: [:index, :destroy]
 
-  constraints(Subdomain) do
-    match 'management', to: 'management#index', via: :get
-    resources :customers, only: [:index, :show, :destroy]
-  end
+  match 'management', to: 'management#index', via: :get
+  resources :customers, only: [:index, :show, :destroy, :edit, :update], concerns: :commentable
 
   authenticated :user do
     root to: 'high_voltage/pages#show', id: 'home', as: :authenticated_root

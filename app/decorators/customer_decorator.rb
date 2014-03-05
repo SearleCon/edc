@@ -10,12 +10,9 @@ class CustomerDecorator < Draper::Decorator
   end
 
   def full_name
-    model.full_name.capitalize
+    model.full_name.titleize
   end
 
-  def recent_activities(limit=10)
-    model.activities.recent(limit).decorate
-  end
 
 
 end
