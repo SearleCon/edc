@@ -14,6 +14,10 @@
 
 class Application < ActiveRecord::Base
   include Commentable
+  include PublicActivity::Model
+  tracked except: :destroy, params: {
+      changes:  proc {|controller, model| (model.changes.except(:updated_at, :created_at, :id))}
+  }
 
   has_paper_trail
 

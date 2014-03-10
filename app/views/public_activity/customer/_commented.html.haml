@@ -1,0 +1,10 @@
+%li.list-group-item[activity]
+  %blockquote
+    %p
+      = activity.parameters[:comment]
+  %span.label.label-info
+    = "Customer was commented on by #{activity.owner.try(:name)}"
+  %p
+    %span.label.label-default
+    %small.text-muted
+      = "Occurred at #{fa_icon('clock-o', text: "#{activity.created_at}")}".html_safe

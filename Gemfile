@@ -67,6 +67,9 @@ gem 'pg'
 # Papertrail
 gem 'paper_trail', '~> 3.0.0'
 
+# Activity Feed
+gem 'public_activity'
+
 
 group :development do
   gem "better_errors"

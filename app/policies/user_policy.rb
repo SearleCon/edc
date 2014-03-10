@@ -5,24 +5,15 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
-  def show?
-    permissions.include?('read')
-  end
-
   def create?
-   permissions.include?('manage') || permissions.include?('modify')
+   user.admin?
   end
 
   def update?
-   permissions.include?('manage') || permissions.include?('modify')
+    user.admin?
   end
 
   def destroy?
-    false
+    user.admin?
   end
-
-  private
-   def permissions
-     @permissions ||= user.role.permissions.per_subject(record.class.to_s.downcase).map(&:action)
-   end
 end

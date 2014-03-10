@@ -1,0 +1,8 @@
+%li.list-group-item[activity]
+  %span.label.label-warning
+    = "Customer was updated by #{activity.owner.try(:name)}"
+  %br
+  %p
+    %span.label.label-default
+    %small.text-muted
+      = "Occurred at #{fa_icon('clock-o', text: "#{activity.created_at}")}".html_safe

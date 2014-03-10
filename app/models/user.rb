@@ -17,7 +17,7 @@
 #  updated_at             :datetime         not null
 #  name                   :string(255)
 #  account_id             :integer
-#  role_id                :integer
+#  role                   :integer
 #
 
 class User < ActiveRecord::Base
@@ -29,14 +29,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :account
-  belongs_to :role
-
   delegate :company, :subdomain, :drop_box_key, :drop_box_secret , to: :account, allow_nil: true
-  delegate :name, to: :role, prefix: true, allow_nil: true
 
-  scope :excluding, -> (user){where.not(id: user)}
+  enum role: { admin: 0, consultant: 1 }
 
-  def has_role?(value)
-     role_name == value.to_s
-  end
+  scope :exclude, ->(user){ where.not(id: user) }
+
 end

@@ -11,11 +11,12 @@
 
 class Customer < ActiveRecord::Base
   include Commentable
-
+  include PublicActivity::Model
+  tracked except: :destroy, params: {
+      changes:  proc {|controller, model| (model.changes.except(:updated_at, :created_at, :id).each_value {|v| v.compact!})}
+  }
 
   has_paper_trail
-
-  attr_accessor :modifier
 
   has_many :applications
 

@@ -15,8 +15,14 @@ class Comment < ActiveRecord::Base
   belongs_to :commentable, polymorphic: true
   belongs_to :user
 
+  validates :content, presence: true
+
   default_scope -> { order(created_at: :desc) }
 
-  validates :content, presence: true
+  after_create :create_activitiy
+
+  def create_activitiy
+    self.commentable.create_activity key: "#{self.commentable_type.downcase}.commented", params: {comment: self.content}, owner: self.user
+  end
 
 end

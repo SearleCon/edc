@@ -1,0 +1,11 @@
+%li.list-group-item[activity]
+  - activity.parameters[:changes].each do |key, value|
+    %p= "#{key.titleize}: #{value.first}"
+
+  %span.label.label-success
+    = "Customer was created by #{activity.owner.try(:name)}"
+  %br
+  %p
+    %span.label.label-default
+    %small.text-muted
+      = "Occurred at #{fa_icon('clock-o', text: "#{activity.created_at}")}".html_safe

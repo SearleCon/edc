@@ -17,7 +17,7 @@
 #  updated_at             :datetime         not null
 #  name                   :string(255)
 #  account_id             :integer
-#  role_id                :integer
+#  role                   :integer
 #
 
 require 'spec_helper'
