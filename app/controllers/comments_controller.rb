@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   respond_to :html, :js
 
   before_action :load_commentable
-  before_action :get_resource, only: [:destroy]
+  before_action :set_comment, only: [:destroy]
 
   def index
     @comments = @commentable.comments
@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
    @commentable = resource.classify.constantize.find(id)
   end
 
-  def get_resource
+  def set_comment
     @comment = @commentable.comments.find(params[:id])
   end
 

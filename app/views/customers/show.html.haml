@@ -9,11 +9,10 @@
         %li.list-group-item
           = link_to fa_icon(:inbox, text: 'Applications'), customers_path
         %li.list-group-item
-          = link_to fa_icon(:tasks, text: 'Timeline'), customers_path
+          = link_to fa_icon(:tasks, text: 'Timeline'), polymorphic_path([customer, :activities]), remote: true
         %li.list-group-item
           = link_to fa_icon('arrow-circle-left', text: 'Customers'), customers_path
   .content-with-sidebar
-    #details.well
+    #customer
       = render 'details'
-    = render 'comments/comments', commentable: customer
-    = render 'timeline'
+      = render 'comments/comments', commentable: customer

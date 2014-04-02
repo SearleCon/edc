@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
 # Rails
-gem "rails", "~> 4.1.0.rc1"
+gem "rails", "~> 4.1.0.rc2"
 gem 'jbuilder'
 gem 'jquery-rails'
-gem 'sass-rails'
+gem "sass-rails", "~> 4.0.2"
 gem 'coffee-rails'
 gem 'uglifier', '~> 1.3.0'
 
