@@ -97,6 +97,7 @@ GEM
     erb2haml (0.1.5)
       html2haml
     erubis (2.7.0)
+    excon (0.32.1)
     execjs (2.0.2)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
@@ -123,6 +124,9 @@ GEM
       haml (>= 3.1, < 5.0)
       railties (>= 4.0.1)
     hashie (2.0.5)
+    heroku-api (0.3.18)
+      excon (~> 0.27)
+      multi_json (~> 1.8)
     heroku-deflater (0.5.3)
       rack (>= 1.4.5)
     high_voltage (2.1.0)
@@ -176,6 +180,7 @@ GEM
     mini_portile (0.5.3)
     minitest (5.3.2)
     multi_json (1.9.2)
+    netrc (0.7.7)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     normalize-rails (3.0)
@@ -184,6 +189,10 @@ GEM
     paper_trail (3.0.1)
       activerecord (>= 3.0, < 5.0)
       activesupport (>= 3.0, < 5.0)
+    paratrooper (2.2.0)
+      heroku-api (~> 0.3)
+      netrc (~> 0.7)
+      rendezvous (~> 0.0.1)
     pg (0.17.1)
     polyglot (0.3.4)
     posix-spawn (0.3.8)
@@ -244,6 +253,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
     rake (10.2.2)
+    rendezvous (0.0.2)
     request_store (1.0.5)
     responders (1.0.0)
       railties (>= 3.2, < 5)
@@ -357,6 +367,7 @@ DEPENDENCIES
   minitest
   normalize-rails
   paper_trail (~> 3.0.0)
+  paratrooper
   pg
   public_activity
   pundit
