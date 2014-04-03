@@ -81,10 +81,10 @@ group :development do
   gem 'rails_layout'
   gem "erb2haml"
   gem 'spring'
+  gem 'sqlite3'
 end
 
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
   gem 'heroku-deflater'
 end
