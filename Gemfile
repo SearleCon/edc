@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.1.0'
+
 # Rails
 gem "rails", "~> 4.1.0.rc2"
 gem 'jbuilder'
@@ -82,7 +84,7 @@ group :development do
 end
 
 group :production do
-  gem "pg", '0.17.0'
+  gem 'pg'
   gem 'rails_12factor'
   gem 'heroku-deflater'
 end
