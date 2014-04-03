@@ -78,6 +78,7 @@ group :development do
   gem 'rails_layout'
   gem "erb2haml"
   gem 'spring'
+  gem 'flatten_migrations'
 end
 
 group :production do
