@@ -72,6 +72,9 @@ gem 'public_activity'
 # Deployment
 gem 'paratrooper'
 
+# Caching
+gem 'dalli'
+gem 'memcachier'
 
 group :development do
   gem "better_errors"
