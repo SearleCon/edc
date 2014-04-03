@@ -53,9 +53,6 @@ gem 'responders'
 # Static Pages
 gem 'high_voltage'
 
-# Temp Tables
-gem 'temping'
-
 # Font Awesome
 gem "font-awesome-rails"
 
@@ -94,7 +91,8 @@ group :test do
   gem "capybara", "~> 2.0.2"
   gem "launchy", "~> 2.2.0"
   gem "minitest"
-
+  # Temp Tables
+  gem 'temping'
 
   # Factories
   gem "faker", "~> 1.1.2"
