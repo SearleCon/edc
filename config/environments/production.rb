@@ -78,13 +78,13 @@ Edc::Application.configure do
   config.action_mailer.default :charset => "utf-8"
 
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: "example.com",
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"]
+      address: Rails.application.secrets.mandrill_address,
+      port: Rails.application.secrets.mandrill_port,
+      domain: "edc-heroku-app.herokuapp.com",
+      authentication: "plain",
+      enable_starttls_auto: true,
+      user_name: Rails.application.secrets.mandrill_user_name,
+      password: Rails.application.secrets.mandrill_password
   }
 
 end
