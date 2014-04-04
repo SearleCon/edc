@@ -18,6 +18,7 @@ gem 'normalize-rails'
 gem 'bootbox-rails'
 gem 'select2-rails'
 gem 'jquery-datatables-rails'
+gem 'bootstrap_form'
 
 # Decorator
 gem 'draper', '~> 1.3'

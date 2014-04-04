@@ -21,6 +21,7 @@
 #
 
 class User < ActiveRecord::Base
+  include AttributeDefaults
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -34,5 +35,10 @@ class User < ActiveRecord::Base
   enum role: { admin: 0, consultant: 1 }
 
   scope :exclude, ->(user){ where.not(id: user) }
+
+  private
+    def defaults
+      { role: 1 }
+    end
 
 end

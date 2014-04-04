@@ -1,5 +1,4 @@
 module ApplicationHelper
-  include  BootstrapForm::Helper
 
   def link_to(text, path, options = {}, &block)
     icon = options.delete(:icon)
